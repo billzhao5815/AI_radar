@@ -1,0 +1,67 @@
+{
+  "name": "AI Agent 工程实践",
+  "monitoring_goal": "AI Agent 工程实践",
+  "monitoring_scope": {
+    "include": [
+      "关注开源实现、工具调用与工程案例"
+    ],
+    "exclude": []
+  },
+  "terms": [
+    "AI Agent",
+    "智能体",
+    "工具调用",
+    "MCP"
+  ],
+  "assumptions": [],
+  "sources": [
+    "github",
+    "bili"
+  ],
+  "answers": {
+    "goal": "AI Agent 工程实践",
+    "detail": "关注开源实现、工具调用与工程案例",
+    "sources": [
+      "github",
+      "bili"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "t1",
+      "source": "github",
+      "capability_id": "github_search",
+      "query": "agent created:>{d}",
+      "options": {
+        "days": 30
+      },
+      "result_limit": 40
+    },
+    {
+      "id": "t2",
+      "source": "bili",
+      "capability_id": "bili_search",
+      "query": "AI Agent",
+      "options": {
+        "days": 7,
+        "pages": 1,
+        "order": "pubdate"
+      },
+      "result_limit": 40
+    }
+  ],
+  "schema_version": 1,
+  "collection_budget": {
+    "max_calls_with_retries": 0,
+    "max_usd_est": 0
+  },
+  "analysis": {
+    "target_cny": 0.8,
+    "limit_cny": 1.2,
+    "r04": "r04-v1",
+    "r05": "r05-v1",
+    "uncertain": "separate",
+    "candidate_limit": 160,
+    "batch_size": 20
+  }
+}

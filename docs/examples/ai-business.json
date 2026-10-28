@@ -1,0 +1,67 @@
+{
+  "name": "利用 AI 的创业与商业案例",
+  "monitoring_goal": "利用 AI 的创业与商业案例",
+  "monitoring_scope": {
+    "include": [
+      "关注真实项目及其收入证据"
+    ],
+    "exclude": []
+  },
+  "terms": [
+    "AI创业",
+    "AI 商业化",
+    "AI SaaS",
+    "收入案例"
+  ],
+  "assumptions": [],
+  "sources": [
+    "github",
+    "bili"
+  ],
+  "answers": {
+    "goal": "利用 AI 的创业与商业案例",
+    "detail": "关注真实项目及其收入证据",
+    "sources": [
+      "github",
+      "bili"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "t1",
+      "source": "github",
+      "capability_id": "github_search",
+      "query": "AI SaaS",
+      "options": {
+        "days": 30
+      },
+      "result_limit": 40
+    },
+    {
+      "id": "t2",
+      "source": "bili",
+      "capability_id": "bili_search",
+      "query": "AI创业",
+      "options": {
+        "days": 7,
+        "pages": 1,
+        "order": "pubdate"
+      },
+      "result_limit": 40
+    }
+  ],
+  "schema_version": 1,
+  "collection_budget": {
+    "max_calls_with_retries": 0,
+    "max_usd_est": 0
+  },
+  "analysis": {
+    "target_cny": 0.8,
+    "limit_cny": 1.2,
+    "r04": "r04-v1",
+    "r05": "r05-v1",
+    "uncertain": "separate",
+    "candidate_limit": 160,
+    "batch_size": 20
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "note": "仅重放引用匹配，不调用模型，不代表重新判定语义相关性。",
+  "samples": [
+    {
+      "item_id": "github:calmrocks/ai-engineer-notebooks",
+      "title": "calmrocks/ai-engineer-notebooks",
+      "v3_quote_match": true
+    },
+    {
+      "item_id": "x:2114543587941810674",
+      "title": "🚀 Refold AI is Hiring! | India HQ 🇮🇳\n\nOpen Positions:\n\n< Head of Engineering\n< Senior Frontend Engineer\n< Senior Software Engineer\n< Softwar",
+      "v3_quote_match": true
+    },
+    {
+      "item_id": "x:2114793811436286076",
+      "title": "🚀 HIRING: Forward Deployed Engineer @ Peakflo\n\nWant to build AI agents that automate real-world finance operations? Peakflo, a Y Combinator-",
+      "v3_quote_match": true
+    },
+    {
+      "item_id": "x:2114796269462011941",
+      "title": "🚨 AiStudio is hiring Forward Deployed Engineers!\n\n🔹 Location: India | Fully Remote\n🔹 Salary: ₹15 - 20 LPA\n🔹 Experience: 1-3 years (or strong",
+      "v3_quote_match": false
+    },
+    {
+      "item_id": "x:2115058953659076711",
+      "title": "1,679 open AI roles on our board this week. 83% of them say nothing about visa sponsorship.\n\nRead together, the ads from 221 companies descr",
+      "v3_quote_match": true
+    },
+    {
+      "item_id": "x:2115201037602816202",
+      "title": "I hear the exact same issue with every \"AI Transformation\" roll out:\n\nWe brought in someone in who is brilliant, but they have no clue how t",
+      "v3_quote_match": true
+    },
+    {
+      "item_id": "youtube:FSZhPDzESPU",
+      "title": "Complete End To End AI Forward Deployed Engineer(FDE) Project Implementation",
+      "v3_quote_match": true
+    }
+  ]
+}
