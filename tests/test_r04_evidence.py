@@ -16,12 +16,20 @@ class EvidenceTests(unittest.TestCase):
         data.update(kw)
         return validate_r04({'items':[data]},[item])[item['id']]
 
-    def test_fragments_are_original_locatable_spans(self):
-        item=self.row();r=self.verdict(item)
-        self.assertEqual(r['status'],'relevant')
-        self.assertEqual(len(r['evidence']),2)
-        for span in r['evidence']:
-            self.assertEqual(item[span['field']][span['start']:span['end']],span['quote'])
+    def test_only_minimal_output_is_required(self):
+        item=self.row()
+        r=validate_r04({'items':[dict(item_id='one',status='relevant',reason='可能相关')]},[item])['one']
+        self.assertEqual(r,dict(item_id='one',status='relevant',reason='可能相关'))
+
+    def test_basic_contract_rejects_invalid_output(self):
+        good=dict(item_id='one',status='relevant',reason='可能相关')
+        for raw in (None, {}, {'items':[]}, {'items':[good,good]},
+                    *({'items':[dict(good,**change)]} for change in
+                      ({'item_id':'fake'}, {'item_id':[]}, {'status':'pending'}, {'reason':''}, {'reason':None}))):
+            with self.subTest(raw=raw), self.assertRaises(ValueError):
+                validate_r04(raw,[self.row()])
+        with self.assertRaises(ValueError):
+            validate_r04({'items':[good,good]},[self.row(),dict(id='two')])
 
     def test_legacy_ellipsis_and_typographic_variants(self):
         item=self.row()
@@ -39,15 +47,19 @@ class EvidenceTests(unittest.TestCase):
         self.assertIsNone(evidence_spans('AI搞钱项目',dict(title='资产变化 #AI搞钱项目',query='AI搞钱项目')))
         self.assertIsNone(evidence_spans([dict(field='text',quote='Forward Deployed Engineer')],self.row()))
 
-    def test_adjacent_and_promotion_never_enter_r05_even_with_real_quotes(self):
-        for relation,role in [('adjacent','main'),('mention','promotion'),('direct','promotion'),('direct','incidental'),('insufficient','missing')]:
-            self.assertEqual(self.verdict(self.row(),relation,role)['status'],'uncertain')
-        self.assertEqual(self.verdict(self.row(),'unrelated')['status'],'irrelevant')
+    def test_legacy_classifications_do_not_override_status(self):
+        for relation,role in [('adjacent','main'),('mention','promotion'),('direct','promotion'),
+                              ('direct','incidental'),('insufficient','missing'),('unrelated','main')]:
+            self.assertEqual(self.verdict(self.row(),relation,role)['status'],'relevant')
+        for status in ('relevant','uncertain','irrelevant'):
+            self.assertEqual(self.verdict(self.row(),status=status)['status'],status)
 
-    def test_evidence_failure_is_distinct_from_content_uncertainty(self):
-        r=self.verdict(self.row(),evidence=['Invented text that is not present'])
-        self.assertEqual(r['review_code'],'evidence_unmatched')
-        self.assertEqual(self.verdict(self.row(),'insufficient')['review_code'],'insufficient')
+    def test_missing_or_unmatched_quotes_do_not_gate_passage(self):
+        for evidence in (None, [], ['Invented text that is not present']):
+            r=self.verdict(self.row(),evidence=evidence,target_evidence=None)
+            self.assertEqual(r['status'],'relevant')
+            self.assertNotIn('evidence',r)
+            self.assertNotIn('review_code',r)
 
     def test_actual_fde_quoted_ellipsis_recovers_without_rewriting_source(self):
         data=json.loads((Path(__file__).parents[1]/'docs/test-results/fde-run-10.json').read_text())

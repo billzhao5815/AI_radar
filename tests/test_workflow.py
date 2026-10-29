@@ -50,9 +50,9 @@ def item(n, text='Agent implementation', source='github'):
 def model(prompt, system, max_tokens):
     p=json.loads(prompt)
     if system==w.R04:
-        out={'items':[dict(item_id=i['item_id'],status='uncertain' if 'unknown' in i['text'] else 'irrelevant' if 'irrelevant' in i['text'] else 'relevant',relation='insufficient' if 'unknown' in i['text'] else 'unrelated' if 'irrelevant' in i['text'] else 'direct',evidence_role='main',reason='依据提供的内容',evidence=i.get('text','')[:100],target_evidence=i.get('text','')[:100]) for i in p['items']]}
+        out={'items':[dict(item_id=i['item_id'],status='uncertain' if 'unknown' in i['text'] else 'irrelevant' if 'irrelevant' in i['text'] else 'relevant',reason='依据提供的内容') for i in p['items']]}
     elif system==w.R05 and 'items' in p:
-        out={'groups':[dict(title=i['title'],category='工程实践',summary='开源实现',item_ids=[i['item_id']]) for i in p['items']]}
+        out={'groups':[dict(title=i['title'] or i['item_id'],category='工程实践',summary='开源实现',item_ids=[i['item_id']]) for i in p['items']]}
     elif system==w.R05:
         out={'groups':[dict(title=i['title'],category=i['category'],summary=i['summary'],member_groups=[i['group_id']]) for i in p['groups']]}
     else: raise AssertionError('unexpected model call')
@@ -198,10 +198,26 @@ class WorkflowTest(unittest.TestCase):
         self.activate();rows=[item(1),item(2,'unknown'),item(3,'irrelevant')]
         rid,r=self.run_with(rows)
         self.assertEqual(r['state']['status'],'ok');self.assertEqual(r['counts'],{'relevant':1,'uncertain':1,'irrelevant':1})
-        self.assertEqual(r['state']['groups'][0]['item_ids'],['github:1'])
+        self.assertEqual({iid for g in r['state']['groups'] for iid in g['item_ids']},{'github:1','github:2'})
+        self.assertEqual([i['r05_status'] for i in r['items']],['grouped','grouped','not_applicable'])
         rid2,r2=self.run_with(rows)
         self.assertNotEqual(rid,rid2);self.assertTrue(all(i['cache_hit'] for i in r2['items']))
         self.assertEqual(r2['costs']['r04']['calls'],0);self.assertEqual(r2['costs']['r05']['calls'],0)
+
+    def test_empty_content_passes_to_r05(self):
+        self.activate()
+        empty=item(1);empty.update(title='',text='')
+        _,r=self.run_with([empty])
+        self.assertEqual(r['counts'],{'uncertain':1})
+        self.assertEqual(r['items'][0]['r05_status'],'grouped')
+        self.assertEqual(r['costs']['r04']['calls'],0)
+
+    def test_uncertain_r05_pending_is_reported(self):
+        self.activate()
+        with patch.object(w,'organize',side_effect=w.BudgetStop):
+            _,r=self.run_with([item(1,'unknown')])
+        self.assertEqual(r['r05_pending'],1)
+        self.assertEqual(r['items'][0]['r05_status'],'pending')
 
     def test_content_versions_and_target_isolation(self):
         self.activate();_,r=self.run_with([item(1)])

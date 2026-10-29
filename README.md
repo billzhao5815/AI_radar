@@ -122,7 +122,7 @@ MIT，见 [LICENSE](LICENSE)。二维码生成用的是 Project Nayuki 的 MIT �
 
 ## Web 配置 Agent 与 R01–R05
 
-三问配置先检查 AI 相关性，再结合渠道与具体需求理解监控目标、生成搜索关键词；程序依据 `capabilities.MENU` 的全部固定能力构建采集计划，预览确认后生效。运行 `python3 -m radar serve` 后访问 `/setup`，共用现有 `.env` 的大模型配置；新采集流程止于 R05，默认分析预算目标 ¥0.8、上限 ¥1.2。原 dashboard 和 CLI 日报流程保持独立。
+四问配置先检查 AI 相关性，再结合渠道与具体需求理解监控目标、生成搜索关键词；程序依据 `capabilities.MENU` 的全部固定能力构建采集计划，预览确认后生效。运行 `python3 -m radar serve` 后访问 `/setup`，共用现有 `.env` 的大模型配置；新采集流程止于 R05，默认分析预算目标 ¥0.8、上限 ¥1.2。原 dashboard 和 CLI 日报流程保持独立。
 
 使用方式、预算与恢复细节见 [Web 工作流说明](docs/ai-radar-workflow.md)。
 
