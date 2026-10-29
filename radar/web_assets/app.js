@@ -12,14 +12,85 @@ async function api(url,body){const r=await fetch(url,body?{method:'POST',headers
 async function refresh(){state=await api('/api/state');token=state.token;}
 function header(k,title,sub){return `<div class="hero"><div class="eyebrow">${k} / AI RADAR</div><h1>${title}</h1><p class="subtle">${sub}</p></div>`;}
 function settings(p){return `<h3>R01 · 监控目标</h3><p>${esc(p.monitoring_goal)}</p><p>${tags(p.monitoring_scope.include)}</p><p class="subtle">排除：${esc(p.monitoring_scope.exclude.join('、')||'没有额外排除')}</p><div class="rule"><h3>R02 · 信息来源</h3>${tags(p.sources.map(s=>state.names[s]))}</div><div class="rule"><h3>R04 · 相关性判断</h3><p>去重、缓存与候选筛选 → 批量语义判断。相关内容进入聚合，不确定内容单独保存。</p><p class="subtle">候选优先词（未命中仍保留探索机会）</p>${tags(p.terms)}</div><div class="rule"><h3>R05 · 分类与聚合</h3><p>按具体事件、项目或方法归组；保留独立条目和来源。只处理本轮相关内容，不做价值评分与跨天趋势。</p></div>${p.assumptions.length?`<div class="rule"><h3>计划假设</h3><ul>${p.assumptions.map(a=>`<li>${esc(a)}</li>`).join('')}</ul></div>`:''}`;}
+function channelKeywords(p){return p.channel_keywords?`<div class="rule"><h3>各渠道搜索词</h3>${p.sources.map(source=>`<p><strong>${esc(state.names[source])}</strong> ${p.channel_keywords[source]?.length?tags(p.channel_keywords[source]):'<span class="subtle">固定榜单 / 订阅，无需搜索词</span>'}</p>`).join('')}</div>`:'';}
 function taskTable(p){return `<div class="scroll"><table><thead><tr><th>平台 / 动作</th><th>搜索目标</th><th>范围与深度</th></tr></thead><tbody>${p.tasks.map(t=>{const c=state.capabilities.find(c=>c.id===t.capability_id);return `<tr><td>${esc(state.names[t.source])}<br><span class="subtle">${esc(c?.name||t.capability_id)}</span></td><td>${esc(t.query||'平台榜单 / 订阅')}</td><td>${Object.entries(t.options).map(([k,v])=>esc(optionLabel(k,v))).join(' · ')}<br>最多保留 ${t.result_limit} 条</td></tr>`;}).join('')}</tbody></table></div>`;}
-function optionLabel(k,v){const names={days:'时间范围',pages:'页数',order:'排序',rid:'分区',upload_date:'发布时间',duration:'时长',label:'内容范围',sort:'排序',since:'榜单周期',limit:'每类数量',time_field:'仓库时间依据',hours:'最近小时',min_points:'最低讨论积分'};const values={click:'播放量',pubdate:'最新发布',this_week:'本周',this_year:'今年',short:'短视频',Top:'热门',Latest:'最新',daily:'日榜',weekly:'周榜',monthly:'月榜',pushed:'最近更新',created:'新建时间'};if(k==='days')return v?`最近 ${v} 天`:'接口支持的不限时间范围';if(k==='rid')return '分区 '+({1012:'科技数码',1010:'知识',1001:'影视',1005:'动画',1007:'鬼畜',1003:'音乐'}[v]||v);if(k==='label')return v?'低粉爆款':'全部作品';return `${names[k]||k}：${values[v]||v||'不限'}`;}
+function optionLabel(k,v){const names={days:'时间范围',pages:'页数',order:'排序',rid:'分区',upload_date:'发布时间',duration:'时长',label:'内容范围',sort:'排序',since:'榜单周期',limit:'每类数量',time_field:'仓库时间依据',hours:'最近小时',min_points:'最低讨论积分'};const values={click:'播放量',pubdate:'最新发布',this_week:'本周',this_year:'今年',short:'短视频',Top:'热门',Latest:'最新',latest:'最新',hot:'热度',daily:'日榜',weekly:'周榜',monthly:'月榜',pushed:'最近更新',created:'新建时间'};if(k==='days')return v?`最近 ${v} 天`:'接口支持的不限时间范围';if(k==='rid')return '分区 '+({1012:'科技数码',1010:'知识',1001:'影视',1005:'动画',1007:'鬼畜',1003:'音乐'}[v]||v);if(k==='label')return v?'低粉爆款':'全部作品';return `${names[k]||k}：${values[v]||v||'不限'}`;}
 function budgetCard(p){return `<aside><div class="card side"><div class="eyebrow">每轮分析预算</div><div class="budget">¥0.8 <small>目标</small></div><p>最高 ¥1.2 · R04 + R05 合计</p><div class="rule"><p>达到预算后保留已完成结果，其余标为待处理。恢复不会重置额度。</p><p class="subtle">配置 Agent 与采集费独立统计，金额按本地配置单价估算。</p></div>${p?`<div class="rule"><h3>采集预算预留</h3><p>最多 ${p.collection_budget.max_calls_with_retries} 次 TikHub 请求（含重试）<br>估算上限 $${p.collection_budget.max_usd_est.toFixed(3)}</p></div>`:''}</div><div class="card"><h3>统一模型配置</h3><p class="subtle">${state.llm_ready?'已读取原项目的大模型配置。':'请在原项目 .env 中设置 LLM_API_KEY 后重启服务。'} 浏览器不接收或保存密钥。</p></div></aside>`;}
-async function setup(){let a=state.config?.answers||{};if(params.get('draft')){const d=await api('/api/draft?id='+encodeURIComponent(params.get('draft')));a=d.payload?.answers||d.payload||a;}app.innerHTML=header('01','让雷达知道，你在关注什么','回答三个问题，生成一份可预览、可复用的采集计划。')+`<div class="layout"><form id="setupForm"><section class="card"><label for="goal"><span class="step">1</span>你希望监控哪个 AI 相关领域或议题？</label><textarea id="goal" maxlength="2000" required placeholder="例如：AI Agent 工程实践与开源实现">${esc(a.goal||'')}</textarea></section><section class="card"><label><span class="step">2</span>你希望从哪些平台获取信息？</label><div class="platforms">${Object.entries(state.names).map(([id,name])=>{const available=state.capabilities.some(c=>c.source===id&&c.available);return `<label class="platform"><input type="checkbox" name="source" value="${id}" ${a.sources?.includes(id)?'checked':''} ${available?'':'disabled'}> ${esc(name)}${available?'':'<small>需配置 TikHub Key</small>'}</label>`;}).join('')}</div><p class="subtle">仅列出项目已接入平台；微信等尚未接入来源不可选。</p></section><section class="card"><label for="detail"><span class="step">3</span>你具体想关注什么，以及不想看到什么？</label><textarea id="detail" maxlength="2000" placeholder="可以描述关注重点、排除内容，也可以填写“没有特别限制”">${esc(a.detail||'')}</textarea></section><div class="actions"><button type="submit" ${!state.llm_ready||state.busy?'disabled':''}>生成计划预览 →</button><span class="subtle">只生成配置，不启动采集</span></div></form>${budgetCard()}</div>`;
-document.querySelector('#setupForm').onsubmit=async e=>{e.preventDefault();const sources=[...document.querySelectorAll('input[name=source]:checked')].map(x=>x.value);if(!sources.length)return message('请至少选择一个平台');const btn=e.submitter;btn.disabled=true;message('正在生成并校验计划，请稍候…');try{const d=await api('/api/generate',{goal:document.querySelector('#goal').value,sources,detail:document.querySelector('#detail').value||'没有特别限制'});location.href='/plan?draft='+d.draft_id;}catch(err){message(err.message);btn.disabled=false;}};}
-async function plan(){let p=state.config,draft=null;const id=params.get('draft');if(id){draft=await api('/api/draft?id='+encodeURIComponent(id));if(draft.status==='generating'){app.innerHTML=header('02','正在准备你的采集计划','正在整理目标、校验平台与预算。页面可以保留，完成后会自动显示。')+`<div class="card"><p>生成中…</p><p class="subtle">当前有效配置保持不变，不会启动采集。</p><p>Agent 费用：${money(draft.costs.agent.estimated_cny)}</p></div>`;timer=setTimeout(()=>plan().catch(e=>message(e.message)),2000);return;}if(draft.status==='error'){app.innerHTML=header('02','计划尚未生成','原有有效配置保持不变。')+`<div class="card"><p class="error">${esc(draft.error)}</p><p>Agent 费用：${money(draft.costs.agent.estimated_cny)}</p><a class="button" href="/setup?draft=${esc(id)}">修改答案并重试</a></div>`;return;}p=draft.payload;}
+async function setup(){
+  let a=state.config?.answers||{}, goalId='', acceptedGoal='', working=false;
+  const draftId=params.get('draft');
+  let restoredDraft=null;
+  if(draftId){restoredDraft=await api('/api/draft?id='+encodeURIComponent(draftId));a=restoredDraft.payload?.answers||restoredDraft.payload||a;goalId=restoredDraft.payload?.goal_id||'';}
+  else goalId=params.get('goal')||state.config?.goal_id||'';
+  let restoredGoal=null;
+  if(goalId){try{restoredGoal=await api('/api/goal?id='+encodeURIComponent(goalId));if(!draftId)a={...a,goal:restoredGoal.input};}catch(err){message(err.message);goalId='';}}
+  app.innerHTML=header('01','让雷达知道，你在关注什么','先检查 AI 相关性，再选择渠道与关注范围，生成关键词时自动理解目标。')+`<div class="layout"><form id="setupForm">
+    <section class="card"><label for="goal"><span class="step">1</span>你希望监控哪个 AI 相关领域或议题？</label><textarea id="goal" maxlength="2000" required placeholder="例如：AI Agent 工程实践与开源实现" aria-describedby="goalStatus">${esc(a.goal||'')}</textarea><div class="actions"><button id="checkGoal" type="button">校验 AI 相关性 →</button></div><div id="goalStatus" role="status" aria-live="polite"></div></section>
+    <fieldset id="details" disabled><section class="card"><label><span class="step">2</span>你希望从哪些平台获取信息？</label><div class="platforms">${Object.entries(state.names).map(([id,name])=>{const available=state.capabilities.some(c=>c.source===id&&c.available);return `<label class="platform"><input type="checkbox" name="source" value="${id}" ${a.sources?.includes(id)?'checked':''} ${available?'':'disabled'}> ${esc(name)}${available?'':'<small>需配置 TikHub Key</small>'}</label>`;}).join('')}</div><p class="subtle">选择渠道后，将使用该渠道的全部固定采集能力。</p></section>
+    <section class="card"><label for="detail"><span class="step">3</span>你具体想关注什么，以及不想看到什么？</label><textarea id="detail" maxlength="2000" placeholder="可以描述关注重点、排除内容，也可以填写“没有特别限制”">${esc(a.detail||'')}</textarea></section><div class="actions"><button id="generate" type="submit">生成计划预览 →</button><span class="subtle">只生成配置，不启动采集</span></div></fieldset>
+    <p id="draftStatus" role="status" aria-live="polite"></p></form>${budgetCard()}</div>`;
+  const goalInput=document.querySelector('#goal'), check=document.querySelector('#checkGoal'), details=document.querySelector('#details'), goalStatus=document.querySelector('#goalStatus'), draftStatus=document.querySelector('#draftStatus');
+  function controls(){check.disabled=working||state.busy||!state.llm_ready;goalInput.disabled=working;details.disabled=working||state.busy||!goalId||acceptedGoal!==goalInput.value.trim();}
+  function remember(key,id){const url=new URL(location.href);url.search='';url.searchParams.set(key,id);history.replaceState(null,'',url);}
+  function showGoal(g){
+    goalId=g.id;goalStatus.className='';
+    if(g.status==='ready'&&g.input===goalInput.value.trim()){
+      acceptedGoal=g.input;
+      goalStatus.innerHTML=`<h3>AI 相关性校验通过</h3><p>${esc(g.input)}</p><p class="subtle">${esc(g.payload.reason)}</p><p class="subtle">继续选择渠道并填写具体需求，生成关键词时会按 AI 行业主流含义理解目标。</p><p class="subtle">相关性校验费用 ${money(g.costs.agent.estimated_cny)}</p>`;
+    }else{
+      acceptedGoal='';goalStatus.className='error';
+      const detail=g.payload?.clarification||g.payload?.reason||g.error||'目标尚未通过校验，请重新输入';
+      goalStatus.textContent=g.status==='clarification'?'这是旧版校验结果，请点击“校验 AI 相关性”重新校验。':(g.status==='rejected'?'目标不属于 AI 领域，请修改：':'')+detail;
+    }
+    controls();
+  }
+  async function pollGoal(id){
+    try{const g=await api('/api/goal?id='+encodeURIComponent(id));
+      await refresh();
+      if(g.status==='generating'||state.busy){timer=setTimeout(()=>pollGoal(id),1500);return;}
+      working=false;showGoal(g);
+    }catch(err){working=false;goalStatus.textContent=err.message;await refresh().catch(()=>{});controls();}
+  }
+  async function pollDraft(id){
+    try{const d=await api('/api/draft?id='+encodeURIComponent(id));
+      if(d.status==='generating'){draftStatus.textContent='正在解析目标、提炼需求并生成校验渠道关键词…';timer=setTimeout(()=>pollDraft(id),1500);return;}
+      if(d.status==='ready'||d.status==='confirmed'){location.href='/plan?draft='+encodeURIComponent(id);return;}
+      await refresh();
+      if(state.busy){timer=setTimeout(()=>pollDraft(id),1500);return;}
+      working=false;controls();draftStatus.className='error';
+      draftStatus.textContent=(d.status==='clarification'?'请补充或修改具体需求：':'')+(d.error||'生成失败，请重试')+`（关键词生成费用 ${money(d.costs.agent.estimated_cny)}）`;
+    }catch(err){working=false;draftStatus.textContent=err.message;await refresh().catch(()=>{});controls();}
+  }
+  goalInput.oninput=()=>{goalId='';acceptedGoal='';goalStatus.textContent='目标已修改，请重新校验。';draftStatus.textContent='';history.replaceState(null,'',location.pathname);controls();};
+  check.onclick=async()=>{
+    if(!goalInput.reportValidity())return;
+    working=true;acceptedGoal='';goalId='';controls();message('');goalStatus.className='';goalStatus.textContent='正在检查 AI 相关性…';draftStatus.textContent='';
+    try{const g=await api('/api/understand',{goal:goalInput.value});goalId=g.goal_id;remember('goal',goalId);await pollGoal(goalId);}
+    catch(err){working=false;goalStatus.className='error';goalStatus.textContent=err.message;await refresh().catch(()=>{});controls();}
+  };
+  document.querySelector('#setupForm').onsubmit=async e=>{
+    e.preventDefault();if(working)return;
+    if(!acceptedGoal||acceptedGoal!==goalInput.value.trim())return message('请先校验当前监控目标');
+    const sources=[...document.querySelectorAll('input[name=source]:checked')].map(x=>x.value);
+    if(!sources.length)return message('请至少选择一个平台');
+    working=true;controls();message('');draftStatus.className='';draftStatus.textContent='正在解析目标、提炼需求并生成校验渠道关键词…';
+    try{const d=await api('/api/generate',{goal:goalInput.value,goal_id:goalId,sources,detail:document.querySelector('#detail').value});remember('draft',d.draft_id);await pollDraft(d.draft_id);}
+    catch(err){working=false;draftStatus.className='error';draftStatus.textContent=err.message;await refresh().catch(()=>{});controls();}
+  };
+  if(restoredGoal?.status==='generating'){working=true;controls();goalStatus.textContent='正在检查 AI 相关性…';await pollGoal(goalId);}
+  else if(restoredGoal)showGoal(restoredGoal);
+  else controls();
+  if(restoredDraft){
+    if(restoredDraft.status==='generating'){working=true;controls();await pollDraft(draftId);}
+    else if(['error','clarification'].includes(restoredDraft.status)){
+      draftStatus.className='error';draftStatus.textContent=restoredDraft.error;
+    }
+  }
+}
+
+async function plan(){let p=state.config,draft=null;const id=params.get('draft');if(id){draft=await api('/api/draft?id='+encodeURIComponent(id));if(draft.status==='generating'){app.innerHTML=header('02','正在准备你的采集计划','正在整理目标、校验平台与预算。页面可以保留，完成后会自动显示。')+`<div class="card"><p>生成中…</p><p class="subtle">当前有效配置保持不变，不会启动采集。</p><p>Agent 费用：${money(draft.costs.agent.estimated_cny)}</p></div>`;timer=setTimeout(()=>plan().catch(e=>message(e.message)),2000);return;}if(['error','clarification'].includes(draft.status)){app.innerHTML=header('02','计划尚未生成','原有有效配置保持不变。')+`<div class="card"><p class="error">${esc(draft.error)}</p><p>Agent 费用：${money(draft.costs.agent.estimated_cny)}</p><a class="button" href="/setup?draft=${esc(id)}">修改答案并重试</a></div>`;return;}p=draft.payload;}
 if(!p){app.innerHTML=header('02','还没有有效的采集计划','先告诉雷达你关注的目标。')+'<a class="button" href="/setup">开始配置 →</a>';return;}
-const preview=draft?.status==='ready';app.innerHTML=header('02',preview?'确认你的采集计划':esc(p.name),preview?'预览确认后才会生效。确认不会启动采集。':`配置版本 ${esc(state.config?.version||'')} · 计划已冻结，重复运行使用相同任务。`)+`<div class="layout"><div><section class="card">${settings(p)}</section><section class="card"><h2>R03 · 冻结采集计划</h2>${taskTable(p)}</section><div class="actions">${preview?`<button id="confirm">确认并保存配置</button><a class="button secondary" href="/setup?draft=${esc(id)}">返回修改 / 放弃预览</a>`:'<button id="start">开始采集 →</button><a class="button secondary" href="/setup">修改配置</a><a href="/collect">查看历史结果</a><button class="secondary" id="exportPlan">导出配置</button>'}</div>${draft?`<p class="subtle">本次 Agent 配置费用 ${money(draft.costs.agent.estimated_cny)}</p>`:''}</div>${budgetCard(p)}</div>`;
+const preview=draft?.status==='ready';app.innerHTML=header('02',preview?'确认你的采集计划':esc(p.name),preview?'预览确认后才会生效。确认不会启动采集。':`配置版本 ${esc(state.config?.version||'')} · 计划已冻结，重复运行使用相同任务。`)+`<div class="layout"><div><section class="card">${settings(p)}</section><section class="card"><h2>R03 · 采集计划</h2><p class="subtle">${p.schema_version===2?'程序按所选渠道的全部固定能力生成任务，关键词来自配置 Agent。':'这是此前保存的计划，重新配置后将使用全部固定能力。'}</p>${channelKeywords(p)}${taskTable(p)}${(p.planning_notes||[]).map(n=>`<p class="subtle">${esc(n)}</p>`).join('')}</section><div class="actions">${preview?`<button id="confirm">确认并保存配置</button><a class="button secondary" href="/setup?draft=${esc(id)}">返回修改 / 放弃预览</a>`:'<button id="start">开始采集 →</button><a class="button secondary" href="/setup">修改配置</a><a href="/collect">查看历史结果</a><button class="secondary" id="exportPlan">导出配置</button>'}</div>${draft?`<p class="subtle">本次关键词生成费用 ${money(draft.costs.agent.estimated_cny)}${draft.goal_costs?` · 相关性校验费用 ${money(draft.goal_costs.agent.estimated_cny)}（复用时不重复计费）`:''}</p>`:''}</div>${budgetCard(p)}</div>`;
 const confirm=document.querySelector('#confirm');if(confirm)confirm.onclick=()=>action(confirm,async()=>{await api('/api/confirm',{draft_id:id});location.href='/plan';});const exp=document.querySelector('#exportPlan');if(exp)exp.onclick=()=>downloadJson(p,'radar-plan-v'+(state.config?.version||1)+'.json');bindStart();}
 async function action(btn,fn){btn.disabled=true;message('');try{await fn();}catch(e){message(e.message);btn.disabled=false;}}
 function bindStart(){const btn=document.querySelector('#start');if(btn){btn.disabled=state.busy||!state.llm_ready;btn.onclick=()=>action(btn,async()=>{const r=await api('/api/start',{});location.href='/collect?run='+r.run_id;});}}

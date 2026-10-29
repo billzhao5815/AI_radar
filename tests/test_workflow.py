@@ -18,12 +18,27 @@ def answers(goal='AI Agent 工程实践', sources=None):
     return dict(goal=goal, detail='开源实现，没有额外排除', sources=sources or ['github'])
 
 
+def goal_result(goal='AI Agent 工程实践'):
+    return dict(status='ready', ai_related=True, reason='AI 智能体工程实践', name=goal,
+                monitoring_goal=goal, monitoring_scope={'include': ['开源实践'], 'exclude': []}, terms=['Agent'])
+
+
+def keyword_result(sources=None):
+    return dict(status='ready', name='AI Agent 工程实践', monitoring_goal='AI Agent 工程实践', terms=['Agent'],
+                monitoring_scope={'include': ['开源实践'], 'exclude': []},
+                channel_keywords={s: [f'AI Agent {s} implementation'] for s in (sources or ['github'])
+                                  if any(v[0] == s and v[2] for v in cap.MENU.values())})
+
+
 def plan(goal='AI Agent 工程实践', sources=None):
+    # Frozen legacy fixture keeps R04/R05 regression inputs independent of R03 changes.
     a = answers(goal, sources)
-    return w.validate_plan(dict(ai_related=True, name=goal, monitoring_goal=goal,
-        monitoring_scope={'include': ['开源实践'], 'exclude': []}, terms=['Agent'], assumptions=[],
-        tasks=[dict(source=s, capability_id={'github':'github_search','bili':'bili_search'}[s],
-                    query=goal, options={}, result_limit=100) for s in a['sources']]), a)
+    tasks = [dict(id=f't{i+1}', source=s, capability_id={'github':'github_search','bili':'bili_search'}[s],
+                  query=goal, options={}, result_limit=100) for i, s in enumerate(a['sources'])]
+    return dict(name=goal, monitoring_goal=goal, monitoring_scope={'include': ['开源实践'], 'exclude': []},
+                terms=['Agent'], assumptions=[], sources=a['sources'], answers=a, tasks=tasks, schema_version=1,
+                collection_budget=cap.estimate(tasks), analysis={'target_cny': .8, 'limit_cny': 1.2,
+                'r04': 'r04-v3', 'r05': 'r05-v2', 'uncertain': 'separate', 'candidate_limit': 160, 'batch_size': 20})
 
 
 def item(n, text='Agent implementation', source='github'):
@@ -65,17 +80,99 @@ class WorkflowTest(unittest.TestCase):
             rid=w.new_run(self.con);w.execute_run(rid)
         return rid,w.result(self.con,rid)
 
-    def test_validation_platform_parameters_ai_and_empty_ranking(self):
-        p=plan();a=answers()
-        raw=dict(p,ai_related=True)
-        raw['tasks'][0]['options']={'page':99}
-        with self.assertRaises(ValueError):w.validate_plan(raw,a)
-        with self.assertRaises(ValueError):w.validate_plan({'ai_related':False,'reason':'非AI'},answers('童装'))
-        with self.assertRaises(ValueError):w.validate_answers(answers(sources=['wechat']))
-        raw=dict(plan(),ai_related=True);raw['tasks'][0]['source']='bili'
-        with self.assertRaises(ValueError):w.validate_plan(raw,a)
-        raw=dict(plan(),ai_related=True);raw['tasks'][0].update(capability_id='github_trending',query='')
-        self.assertTrue(w.validate_plan(raw,a)['tasks'])
+    def test_goal_gate_and_channel_keywords(self):
+        g=w.validate_goal(goal_result(),answers()['goal'])
+        self.assertEqual(w.validate_goal(dict(ai_related=False,reason='非 AI'),'童装')['status'],'rejected')
+        with self.assertRaises(ValueError):
+            w.validate_goal(dict(status='clarification',ai_related=None,reason='含义未知'),'FDE')
+        for target in ('FDE','AI视频','AI搞钱','AI宠物','AI童装'):
+            gate=w.validate_goal(dict(ai_related=True,reason='AI 相关'),target)
+            self.assertEqual(gate['status'],'ready')
+            self.assertEqual(gate['input'],target)
+            self.assertNotIn('monitoring_goal',gate)
+        with self.assertRaises(ValueError):w.checked_goal(self.con,'missing',answers()['goal'])
+        self.con.execute("INSERT INTO wf_goals VALUES('g','ready',0,?,?,NULL)",(answers()['goal'],w.js(g)));self.con.commit()
+        with self.assertRaises(ValueError):w.checked_goal(self.con,'g','童装')
+        self.assertEqual(w.checked_goal(self.con,'g',answers()['goal']),g)
+        self.assertEqual(w.validate_answers(answers(sources=['wechat']))['sources'], ['wechat'])
+        with self.assertRaises(ValueError):w.validate_answers(answers(sources=['unknown_channel']))
+        raw=keyword_result();raw['channel_keywords']['github']=[]
+        with self.assertRaises(ValueError):w.validate_plan(raw,answers(),g)
+        raw=keyword_result();raw['tasks']=[]
+        with self.assertRaises(ValueError):w.validate_plan(raw,answers(),g)
+        raw=keyword_result(['github','bili']);raw['channel_keywords']['bili']=raw['channel_keywords']['github']
+        shared=w.validate_plan(raw,answers(sources=['github','bili']),g)
+        self.assertEqual(shared['channel_keywords']['github'],shared['channel_keywords']['bili'])
+        raw=keyword_result();raw['channel_keywords']['github']=['agent pushed:>2026-01-01']
+        with self.assertRaises(ValueError):w.validate_plan(raw,answers(),g)
+        with self.assertRaises(w.ClarificationRequired):
+            w.validate_plan(dict(status='clarification',clarification='具体指什么？'),answers(),g)
+
+    def test_fixed_plan_covers_menu_and_douyin_labels(self):
+        sources=['douyin','github','hf']
+        raw=keyword_result(sources);g=goal_result()
+        raw['channel_keywords']['douyin']=['AI 工程案例','AI 工程实战']
+        raw['monitoring_scope']['exclude']=['招聘广告']
+        p=w.validate_plan(raw,answers(sources=sources),g)
+        self.assertEqual({t['capability_id'] for t in p['tasks']},{c for c,v in cap.MENU.items() if v[0] in sources})
+        for q in raw['channel_keywords']['douyin']:
+            self.assertEqual({t['options']['label'] for t in p['tasks'] if t['query']==q},{0,1})
+        self.assertEqual(p['channel_keywords']['hf'],[])
+        self.assertEqual([t['query'] for t in p['tasks'] if t['capability_id'] in ('hf','github_trending')],['',''])
+        self.assertIn('招聘广告',p['monitoring_scope']['exclude'])
+        self.assertEqual(p['monitoring_goal'],g['monitoring_goal'])
+        self.assertEqual(p,w.validate_plan(raw,answers(sources=sources),g))
+        for t in p['tasks']:
+            self.assertEqual(t['options'],{k:v[0] for k,v in cap.MENU[t['capability_id']][3].items()})
+            self.assertEqual(t['result_limit'],40)
+        with patch.object(cap.shortvideo,'douyin',return_value=[]) as fetch:
+            for t in p['tasks']:
+                if t['source']=='douyin':cap.execute(t)
+            self.assertEqual([c.args[0][0][1] for c in fetch.call_args_list],[0,1,0,1])
+
+    def test_interpretation_is_generated_after_channel_selection(self):
+        a=answers('FDE')
+        gate=w.validate_goal(dict(ai_related=True,reason='AI 行业方向'),'FDE')
+        raw=keyword_result()
+        raw.update(name='FDE', monitoring_goal='Forward Deployed Engineer（前沿部署工程师）',
+                   terms=['FDE','Forward Deployed Engineer'])
+        raw['monitoring_scope']={'include':['AI 项目交付实践'],'exclude':['招聘广告']}
+        p=w.validate_plan(raw,a,gate)
+        self.assertEqual(p['answers']['goal'],'FDE')
+        self.assertEqual(p['monitoring_goal'],raw['monitoring_goal'])
+        self.assertEqual(p['goal_interpretation']['monitoring_scope'],raw['monitoring_scope'])
+        self.assertEqual(p['terms'],raw['terms'])
+
+    def test_refined_keywords_keep_model_order_without_forcing_original_input(self):
+        a=answers('我想了解FDE的成功案例和创业经历',sources=['douyin','x','github'])
+        a['detail']='FDE成功案例、FDE创业经历'
+        gate=w.validate_goal(dict(ai_related=True,reason='AI 行业岗位'),'FDE')
+        raw=keyword_result(a['sources'])
+        raw['channel_keywords']={'douyin':['FDE案例','FDE创业'],
+                                 'x':['FDE案例','FDE创业'],
+                                 'github':['FDE工具','FDE案例','FDE项目','FDE开发']}
+        p=w.validate_plan(raw,a,gate)
+        self.assertEqual(p['channel_keywords']['douyin'],['FDE案例','FDE创业'])
+        self.assertNotIn(a['goal'],p['channel_keywords']['douyin'])
+        self.assertEqual(p['channel_keywords']['x'],p['channel_keywords']['douyin'])
+        self.assertEqual(p['channel_keywords']['github'],['FDE工具','FDE案例','FDE项目','FDE开发'])
+        raw['channel_keywords']['github']=['FDE工具','FDE','FDE案例','FDE']
+        p=w.validate_plan(raw,a,gate)
+        self.assertEqual(p['channel_keywords']['github'],['FDE工具','FDE','FDE案例'])
+        with patch.object(config,'TIKHUB_MAX_USD',.063):
+            limited=w.validate_plan(raw,a,gate)
+        self.assertEqual(limited['channel_keywords']['douyin'],['FDE案例'])
+        self.assertEqual(limited['channel_keywords']['x'],['FDE案例'])
+
+    def test_collection_budget_trims_keywords_not_capabilities(self):
+        raw=keyword_result(['douyin']);raw['channel_keywords']['douyin']=['AI 教程','AI 案例','AI 实战']
+        with patch.object(config,'TIKHUB_MAX_USD',.09):
+            p=w.validate_plan(raw,answers(sources=['douyin']),goal_result())
+        self.assertEqual(len(p['tasks']),2)
+        self.assertEqual(p['channel_keywords']['douyin'],['AI 教程'])
+        self.assertTrue(p['planning_notes'])
+        with patch.object(config,'TIKHUB_MAX_USD',.01):
+            with self.assertRaises(ValueError):w.validate_plan(raw,answers(sources=['douyin']),goal_result())
 
     def test_configuration_preview_confirmation_is_atomic(self):
         self.activate();old=w.active(self.con)['version']
@@ -89,9 +186,11 @@ class WorkflowTest(unittest.TestCase):
 
     def test_failed_agent_does_not_replace_active(self):
         self.activate();old=w.active(self.con)
-        self.con.execute("INSERT INTO wf_drafts VALUES('bad','generating',0,?,NULL)",(w.js(answers()),));self.con.commit()
+        self.con.execute("INSERT INTO wf_goals VALUES('g','ready',0,?,?,NULL)",(answers()['goal'],w.js(goal_result())))
+        request=dict(answers=answers(),goal_id='g')
+        self.con.execute("INSERT INTO wf_drafts VALUES('bad','generating',0,?,NULL)",(w.js(request),));self.con.commit()
         with patch.object(w.llm,'complete_once',return_value=('not json',{'prompt_tokens':10,'completion_tokens':2})):
-            w.generate_draft('bad',answers())
+            w.generate_draft('bad',request)
         self.assertEqual(old,w.active(self.con))
         self.assertEqual(self.con.execute("SELECT status FROM wf_drafts WHERE id='bad'").fetchone()[0],'error')
 
@@ -178,7 +277,7 @@ class WorkflowTest(unittest.TestCase):
             def do_POST(self):
                 request=json.loads(self.rfile.read(int(self.headers['Content-Length'])))
                 self.server.requests.append(request)
-                raw=dict(plan(),ai_related=True)
+                raw=goal_result() if request['messages'][0]['content']==w.GOAL_AGENT else keyword_result()
                 body=json.dumps({'choices':[{'message':{'content':json.dumps(raw)}}],
                                  'usage':{'prompt_tokens':100,'completion_tokens':200}}).encode()
                 self.send_response(200);self.end_headers();self.wfile.write(body)
@@ -194,7 +293,9 @@ class WorkflowTest(unittest.TestCase):
             with patch.dict(os.environ,{'RADAR_ENV_FILE':'/dev/null','RADAR_DATA_DIR':self.tmp.name,
                 'LLM_BASE_URL':f'http://127.0.0.1:{provider.server_port}', 'LLM_API_KEY':'local-fixture',
                 'LLM_MODEL':'fixture','LLM_EXTRA_BODY':'{}','PYTHONPYCACHEPREFIX':'/tmp/radar-pycache'}):
-                draft=post('/api/generate',answers())['draft_id']
+                goal_id=post('/api/understand',{'goal':answers()['goal']})['goal_id']
+                jobs.process.wait(timeout=15)
+                draft=post('/api/generate',dict(answers(),goal_id=goal_id))['draft_id']
                 jobs.process.wait(timeout=15)
             with urllib.request.urlopen(base+'/api/draft?id='+draft) as r:preview=json.loads(r.read())
             self.assertEqual(preview['status'],'ready',preview)
@@ -203,7 +304,11 @@ class WorkflowTest(unittest.TestCase):
             post('/api/confirm',{'draft_id':draft})
             self.assertIsNotNone(w.active(self.con))
             self.assertEqual(self.con.execute('SELECT COUNT(*) FROM runs').fetchone()[0],0)
-            self.assertEqual(len(provider.requests),1)
+            self.assertEqual(len(provider.requests),2)
+            self.assertEqual(preview['goal_costs']['agent']['input_tokens'],100)
+            keyword_payload=json.loads(provider.requests[1]['messages'][1]['content'])
+            self.assertNotIn('capabilities',keyword_payload)
+            self.assertEqual({t['capability_id'] for t in preview['payload']['tasks']},{'github_search','github_trending'})
         finally:
             if jobs.busy():jobs.process.terminate();jobs.process.wait(timeout=5)
             server.shutdown();server.server_close();st.join()

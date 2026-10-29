@@ -102,7 +102,7 @@ cron 的时间是服务器本地时间，服务器不在东八区的话自己换
 
 ## 目录
 
-- `radar/sources/`：各平台采集器（bilibili、youtube、shortvideo（抖音/TikTok/小红书）、xtw（X）、github、feeds（资讯 RSS）、misc（Hugging Face、Hacker News、抖音热榜））
+- `radar/sources/`：各平台采集器（wechat（新配置流程中的公众号/视频号）、bilibili、youtube、shortvideo（抖音/TikTok/小红书）、xtw（X）、github、feeds（资讯 RSS）、misc（Hugging Face、Hacker News、抖音热榜））
 - `radar/score.py`：每小时播放、播放÷粉丝、涨星速度、来源内百分位热度
 - `radar/analyze.py`：题材和话题归类、历史探测、标签规则、头条点评的提示词
 - `radar/deep.py`：题材往回查起源
@@ -122,6 +122,10 @@ MIT，见 [LICENSE](LICENSE)。二维码生成用的是 Project Nayuki 的 MIT �
 
 ## Web 配置 Agent 与 R01–R05
 
-新增三问配置、计划确认和采集结果页面。运行 `python3 -m radar serve` 后访问 `/setup`，共用现有 `.env` 的大模型配置；新采集流程止于 R05，默认分析预算目标 ¥0.8、上限 ¥1.2。原 dashboard 和 CLI 日报流程保持独立。
+三问配置先检查 AI 相关性，再结合渠道与具体需求理解监控目标、生成搜索关键词；程序依据 `capabilities.MENU` 的全部固定能力构建采集计划，预览确认后生效。运行 `python3 -m radar serve` 后访问 `/setup`，共用现有 `.env` 的大模型配置；新采集流程止于 R05，默认分析预算目标 ¥0.8、上限 ¥1.2。原 dashboard 和 CLI 日报流程保持独立。
 
 使用方式、预算与恢复细节见 [Web 工作流说明](docs/ai-radar-workflow.md)。
+
+R01–R03 重构后的验收步骤见 [手动测试清单](docs/r01-r03-manual-test.md)。
+
+新配置流程支持微信渠道：选择微信后，固定搜索公众号文章（最近 7 天、最新）及视频号视频（最近 7 天、热度），共享 Agent 按微信生态生成的关键词，使用已有 TikHub Key 和采集预算。旧 CLI 日报采集范围不变。

@@ -49,7 +49,7 @@ DB_PATH = DATA_DIR / "radar.db"
 SITE_DIR = DATA_DIR / "site"
 LOG_DIR = DATA_DIR / "logs"
 
-# TikHub (https://tikhub.io): YouTube, 抖音, TikTok, 小红书 and X search, billed per call.
+# TikHub (https://tikhub.io): YouTube, 抖音, TikTok, 小红书, X and 微信 search, billed per call.
 TIKHUB_API_KEY = _env("TIKHUB_API_KEY")
 TIKHUB_BASE_URL = _env("TIKHUB_BASE_URL", "https://api.tikhub.io")
 # Any OpenAI-compatible chat completions endpoint (DeepSeek, Qwen, Kimi, GLM, a gateway, a local server…).
@@ -88,6 +88,9 @@ TIKHUB_PRICES = {
     "/api/v1/douyin/search/fetch_video_search_v3": 0.01,
     "/api/v1/tiktok/app/v3/fetch_video_search_result": 0.001,
     "/api/v1/xiaohongshu/app_v2/search_notes": 0.01,
+    # WeChat search prices from the public OpenAPI descriptions, checked 2026-10-29.
+    "/api/v1/wechat_search/v2/fetch_search": 0.01,
+    "/api/v1/wechat_search/v2/fetch_search_videos": 0.01,
 }
 TIKHUB_MAX_CALLS = int(_env("TIKHUB_MAX_CALLS", "170"))       # hard cap per run (a normal run uses about 110)
 TIKHUB_MAX_USD = float(_env("TIKHUB_MAX_USD", "0.40"))        # and a spend cap (a normal run is about $0.2)
