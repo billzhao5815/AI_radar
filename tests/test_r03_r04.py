@@ -85,7 +85,10 @@ class RetentionTests(WorkflowTest):
         self.activate(); rid = w.new_run(self.con)
         w.store_rows(self.con, rid, 't1', [item(n, 'irrelevant') for n in range(181)])
         state, p, _ = w.load_run(self.con, rid)
-        self.assertEqual(state['candidate_limit'], 160)
+        self.assertNotIn('candidate_limit', state)
+        state['candidate_limit'] = 160  # Simulate a historical run, then reload it.
+        w.save_state(self.con, rid, state)
+        state, p, _ = w.load_run(self.con, rid)
         batches = []
         def call(con, owner, stage, system, payload, tokens, limit):
             self.assertEqual(stage, 'r04')
@@ -94,6 +97,24 @@ class RetentionTests(WorkflowTest):
         with patch.object(w, 'call_model', side_effect=call): w.analysis(self.con, rid, state, p)
         self.assertEqual(batches, [20] * 9 + [1])
         self.assertEqual({i['r04_status'] for i in w.run_items(self.con, rid)}, {'irrelevant'})
+
+    def test_configured_keyword_order_modes_and_fixed_queues(self):
+        p = plan()
+        p['channel_keywords'] = {'douyin': ['AI综艺', 'AI短剧']}
+        queries = ['douyin:AI短剧', 'douyin:AI综艺:低粉爆款', 'douyin:AI综艺',
+                   'douyin_low_followers:AI短剧', 'douyin:hot', 'unmatched', 'AI综艺']
+        rows = [dict(item(n, source='douyin'), query=q, metrics={}) for n, q in enumerate(queries)]
+        # A result discovered in both modes still takes one slot in its keyword queue.
+        rows[1]['queries'] = ['douyin:AI综艺:低粉爆款', 'douyin:AI综艺']
+        result = w.candidates(rows, p)
+        self.assertEqual([r['id'] for r in result],
+                         ['douyin:1', 'douyin:0', 'douyin:4', 'douyin:5', 'douyin:2', 'douyin:3', 'douyin:6'])
+        p['channel_keywords']['douyin'].reverse()
+        self.assertEqual([r['id'] for r in w.candidates(rows, p)[:2]], ['douyin:0', 'douyin:1'])
+        p['channel_keywords'] = {'wechat': ['AI综艺', 'AI短剧']}
+        rows = [dict(item(n, source='wechat'), query=q) for n, q in enumerate(
+            ['wechat:video:AI短剧', 'wechat_article_search:AI综艺', 'wechat:article:AI综艺', 'feed:wechat'])]
+        self.assertEqual([r['id'] for r in w.candidates(rows, p)], ['wechat:1', 'wechat:0', 'wechat:3', 'wechat:2'])
 
     def test_cache_covers_actual_input(self):
         original = item(1); original['extra'] = {'tags': ['a'], 'made_by_ai': False}

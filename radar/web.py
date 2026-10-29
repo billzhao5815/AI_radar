@@ -159,7 +159,6 @@ def make_handler(jobs, token):
                         extra = body.get('extra_budget', 0)
                         if type(extra) not in (int, float) or not 0 <= extra <= 10: raise ValueError('追加额度必须在0至10元之间')
                         state['limit_cny'] = round(state['limit_cny'] + extra, 4)
-                        state['candidate_limit'] += 160
                         state['prefer_target'] = False
                         state['status'] = 'running'
                         wf.save_state(con, rid, state); jobs.launch('run', rid)

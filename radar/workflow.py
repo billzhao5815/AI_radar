@@ -194,7 +194,7 @@ def build_plan(answers, goal, scope, keywords):
                   goal_interpretation=goal, channel_keywords=used, proposed_channel_keywords=keywords,
                   planning_notes=notes, tasks=tasks, schema_version=2, collection_budget=cap.estimate(tasks))
     result['analysis'] = {'target_cny': TARGET, 'limit_cny': LIMIT, 'r04': 'r04-v4', 'r05': 'r05-v2',
-                          'uncertain': 'pass', 'candidate_limit': 160, 'batch_size': 20}
+                          'uncertain': 'pass', 'batch_size': 20}
     return result
 
 
@@ -374,7 +374,7 @@ def new_run(con):
     rid = con.execute("INSERT INTO runs(day,started,status) VALUES(?,?,'running')",
                       (datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d'), time.time())).lastrowid
     state = dict(status='running', stage='collect', tasks={}, groups=[], group_batches=[],
-                 limit_cny=LIMIT, candidate_limit=160, errors=[], collection_usd=0, collection_calls=0)
+                 limit_cny=LIMIT, errors=[], collection_usd=0, collection_calls=0)
     con.execute('INSERT INTO wf_runs VALUES(?,?,?)', (rid, p['version'], js(state)))
     con.commit()
     return rid
@@ -458,10 +458,29 @@ def candidates(items, plan):
     now = time.time()
     rows = score.annotate(list(unique.values()), now=now)  # annotate also computes per-source heat
     buckets = defaultdict(lambda: defaultdict(list))
+    channel_keywords = plan.get('channel_keywords') or {}
+
+    def query_bucket(source, query):
+        # Only recognize collector search encodings; fixed/unmatched origins stay independent.
+        fixed = {'github:trending', 'bili:popular', 'bili:hot', 'douyin:hot'}
+        if query in fixed or query.startswith(('feed:', 'bili:rank')):
+            return ('other', query)
+        prefixes = [source] + [key for key, value in cap.MENU.items() if value[0] == source and value[2]]
+        if source == 'wechat': prefixes += ['wechat:article', 'wechat:video']
+        for keyword in channel_keywords.get(source, []):
+            aliases = {keyword, *(prefix + ':' + keyword for prefix in prefixes)}
+            if source == 'douyin': aliases.add('douyin:' + keyword + ':低粉爆款')
+            if source == 'youtube': aliases.add('youtube:' + keyword + ':short')
+            if query in aliases:
+                return ('keyword', keyword)
+        return ('other', query)
+
     for item in rows:
         platform = {'douyin_hot': 'douyin', 'bili_hot': 'bili'}.get(item['source'], item['source'])
         for query in item['queries'] or ['']:
-            buckets[platform][query].append(item)
+            key = query_bucket(platform, query)
+            if not any(row['id'] == item['id'] for row in buckets[platform][key]):
+                buckets[platform][key].append(item)
 
     def priority(group):
         high, recent, other = [], [], []
@@ -485,7 +504,9 @@ def candidates(items, plan):
 
     sources = {}
     for source, queries in buckets.items():
-        sources[source] = deque(priority(queries[q]) for q in sorted(queries))
+        ordered = [('keyword', q) for q in channel_keywords.get(source, []) if ('keyword', q) in queries]
+        ordered.extend(key for key in queries if key not in ordered)
+        sources[source] = deque(priority(queries[key]) for key in ordered)
     out, seen = [], set()
     while sources:
         for source in sorted(list(sources)):

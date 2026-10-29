@@ -293,7 +293,17 @@ class WorkflowTest(unittest.TestCase):
             def do_POST(self):
                 request=json.loads(self.rfile.read(int(self.headers['Content-Length'])))
                 self.server.requests.append(request)
-                raw=goal_result() if request['messages'][0]['content']==w.GOAL_AGENT else keyword_result()
+                keyword = keyword_result()
+                responses = {
+                    w.GOAL_AGENT: dict(ai_related=True, reason='AI 智能体工程实践'),
+                    w.kp.GOAL_PARSE: dict(status='ready', clarification='', name=keyword['name'],
+                        monitoring_goal=keyword['monitoring_goal'], terms=keyword['terms'],
+                        monitoring_scope=keyword['monitoring_scope'], must_cover={}),
+                    w.kp.CHANNEL_GENERATE: dict(channel_keywords=keyword['channel_keywords']),
+                    w.kp.KEYWORD_REVIEW: dict(checks={key: dict(passed=True, reason='符合目标和范围')
+                        for key in ('scope', 'exclusions', 'terminology', 'constraints')}, coverage={}, issues=[]),
+                }
+                raw=responses[request['messages'][0]['content']]
                 body=json.dumps({'choices':[{'message':{'content':json.dumps(raw)}}],
                                  'usage':{'prompt_tokens':100,'completion_tokens':200}}).encode()
                 self.send_response(200);self.end_headers();self.wfile.write(body)
@@ -316,11 +326,18 @@ class WorkflowTest(unittest.TestCase):
             with urllib.request.urlopen(base+'/api/draft?id='+draft) as r:preview=json.loads(r.read())
             self.assertEqual(preview['status'],'ready',preview)
             self.assertIsNone(w.active(self.con))
-            self.assertEqual(preview['costs']['agent']['input_tokens'],100)
-            post('/api/confirm',{'draft_id':draft})
+            self.assertEqual(preview['costs']['agent']['input_tokens'],300)
+            self.assertEqual(preview['costs']['agent']['output_tokens'],600)
+            self.assertNotIn('candidate_limit', preview['payload']['analysis'])
+            with patch.object(cap, 'execute') as collect, patch.object(jobs, 'launch') as launch:
+                post('/api/confirm',{'draft_id':draft})
+                collect.assert_not_called(); launch.assert_not_called()
             self.assertIsNotNone(w.active(self.con))
             self.assertEqual(self.con.execute('SELECT COUNT(*) FROM runs').fetchone()[0],0)
-            self.assertEqual(len(provider.requests),2)
+            self.assertEqual(len(provider.requests),4)
+            self.assertEqual([r['messages'][0]['content'] for r in provider.requests],
+                             [w.GOAL_AGENT, w.kp.GOAL_PARSE, w.kp.CHANNEL_GENERATE, w.kp.KEYWORD_REVIEW])
+            self.assertEqual(preview['goal_costs']['agent']['output_tokens'],200)
             self.assertEqual(preview['goal_costs']['agent']['input_tokens'],100)
             keyword_payload=json.loads(provider.requests[1]['messages'][1]['content'])
             self.assertNotIn('capabilities',keyword_payload)
@@ -329,6 +346,35 @@ class WorkflowTest(unittest.TestCase):
             if jobs.busy():jobs.process.terminate();jobs.process.wait(timeout=5)
             server.shutdown();server.server_close();st.join()
             provider.shutdown();provider.server_close();pt.join()
+
+    def test_resume_accepts_new_and_legacy_candidate_state(self):
+        self.activate()
+        jobs = web.Jobs()
+        server = ThreadingHTTPServer(('127.0.0.1', 0), web.make_handler(jobs, 'test-token'))
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            for legacy in (False, True):
+                with self.subTest(legacy=legacy):
+                    rid = w.new_run(self.con)
+                    state, _, _ = w.load_run(self.con, rid)
+                    self.assertNotIn('candidate_limit', state)
+                    state['status'] = 'partial'
+                    if legacy: state['candidate_limit'] = 160
+                    w.save_state(self.con, rid, state)
+                    request = urllib.request.Request(f'http://127.0.0.1:{server.server_port}/api/resume',
+                        data=json.dumps(dict(run_id=rid, extra_budget=0)).encode(),
+                        headers={'X-Radar-Token': 'test-token', 'Content-Type': 'application/json'})
+                    with patch.object(jobs, 'launch') as launch:
+                        with urllib.request.urlopen(request) as response:
+                            self.assertEqual(json.loads(response.read())['run_id'], rid)
+                        launch.assert_called_once_with('run', rid)
+                    resumed, _, _ = w.load_run(self.con, rid)
+                    self.assertEqual(resumed['status'], 'running')
+                    self.assertEqual(resumed['limit_cny'], state['limit_cny'])
+                    if legacy: self.assertEqual(resumed['candidate_limit'], 160)
+                    else: self.assertNotIn('candidate_limit', resumed)
+        finally:
+            server.shutdown(); server.server_close(); thread.join()
 
     def test_recovery_reconciles_dead_worker(self):
         self.activate();rid=w.new_run(self.con)
