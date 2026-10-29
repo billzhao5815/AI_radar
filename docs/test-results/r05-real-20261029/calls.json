@@ -1,0 +1,119 @@
+[
+  {
+    "stage": "r04",
+    "created": 1793276926.538518,
+    "reserved": 0.081924,
+    "cost": 0.024048,
+    "input_tokens": 2176,
+    "output_tokens": 959,
+    "status": "reported"
+  },
+  {
+    "stage": "r04",
+    "created": 1793276935.795857,
+    "reserved": 0.079828,
+    "cost": 0.027012,
+    "input_tokens": 2037,
+    "output_tokens": 1179,
+    "status": "reported"
+  },
+  {
+    "stage": "r04",
+    "created": 1793276947.178474,
+    "reserved": 0.082608,
+    "cost": 0.02326,
+    "input_tokens": 2251,
+    "output_tokens": 891,
+    "status": "reported"
+  },
+  {
+    "stage": "r04",
+    "created": 1793276957.279263,
+    "reserved": 0.07732,
+    "cost": 0.02134,
+    "input_tokens": 1819,
+    "output_tokens": 879,
+    "status": "reported"
+  },
+  {
+    "stage": "r04",
+    "created": 1793276967.605706,
+    "reserved": 0.090728,
+    "cost": 0.02862,
+    "input_tokens": 2495,
+    "output_tokens": 1165,
+    "status": "reported"
+  },
+  {
+    "stage": "r04",
+    "created": 1793276978.101156,
+    "reserved": 0.076916,
+    "cost": 0.014912,
+    "input_tokens": 1560,
+    "output_tokens": 542,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793276984.055413,
+    "reserved": 0.228492,
+    "cost": 0.05652,
+    "input_tokens": 5746,
+    "output_tokens": 2096,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277006.8139038,
+    "reserved": 0.229132,
+    "cost": 0.056844,
+    "input_tokens": 5783,
+    "output_tokens": 2107,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277029.889715,
+    "reserved": 0.206224,
+    "cost": 0.047348,
+    "input_tokens": 4433,
+    "output_tokens": 1851,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277051.743686,
+    "reserved": 0.16244,
+    "cost": 0.031976,
+    "input_tokens": 3602,
+    "output_tokens": 1098,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277065.0332081,
+    "reserved": 0.280364,
+    "cost": 0.088392,
+    "input_tokens": 9522,
+    "output_tokens": 3144,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277090.455199,
+    "reserved": 0.25644,
+    "cost": 0.068408,
+    "input_tokens": 8590,
+    "output_tokens": 2128,
+    "status": "reported"
+  },
+  {
+    "stage": "r05",
+    "created": 1793277108.397612,
+    "reserved": 0.2448,
+    "cost": 0.067208,
+    "input_tokens": 8118,
+    "output_tokens": 2171,
+    "status": "reported"
+  }
+]

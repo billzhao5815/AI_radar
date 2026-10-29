@@ -1,0 +1,4046 @@
+{
+  "plan": {
+    "analysis": {
+      "batch_size": 20,
+      "limit_cny": 1.2,
+      "r04": "r04-v4",
+      "r05": "r05-v3-topics",
+      "target_cny": 0.8,
+      "uncertain": "pass"
+    },
+    "answers": {
+      "detail": {
+        "exclude": [],
+        "include": []
+      },
+      "goal": "AI短剧",
+      "sources": [
+        "bili",
+        "douyin",
+        "xhs"
+      ]
+    },
+    "assumptions": [],
+    "channel_keywords": {
+      "bili": [
+        "AI短剧"
+      ],
+      "douyin": [
+        "AI短剧"
+      ],
+      "xhs": [
+        "AI短剧"
+      ]
+    },
+    "collection_budget": {
+      "max_calls_with_retries": 9,
+      "max_usd_est": 0.09
+    },
+    "goal_interpretation": {
+      "monitoring_goal": "AI短剧",
+      "monitoring_scope": {
+        "exclude": [],
+        "include": []
+      },
+      "name": "AI短剧真实验收",
+      "terms": [
+        "AI短剧"
+      ]
+    },
+    "monitoring_goal": "AI短剧",
+    "monitoring_scope": {
+      "exclude": [],
+      "include": []
+    },
+    "name": "AI短剧真实验收",
+    "planning_notes": [],
+    "proposed_channel_keywords": {
+      "bili": [
+        "AI短剧"
+      ],
+      "douyin": [
+        "AI短剧"
+      ],
+      "xhs": [
+        "AI短剧"
+      ]
+    },
+    "schema_version": 2,
+    "sources": [
+      "bili",
+      "douyin",
+      "xhs"
+    ],
+    "tasks": [
+      {
+        "capability_id": "bili_search",
+        "id": "t1",
+        "options": {
+          "days": 7,
+          "order": "click",
+          "pages": 1
+        },
+        "query": "AI短剧",
+        "result_limit": 40,
+        "source": "bili"
+      },
+      {
+        "capability_id": "douyin",
+        "id": "t2",
+        "options": {
+          "days": 7,
+          "label": 0
+        },
+        "query": "AI短剧",
+        "result_limit": 40,
+        "source": "douyin"
+      },
+      {
+        "capability_id": "douyin_low_followers",
+        "id": "t3",
+        "options": {
+          "days": 7,
+          "label": 1
+        },
+        "query": "AI短剧",
+        "result_limit": 40,
+        "source": "douyin"
+      },
+      {
+        "capability_id": "xhs",
+        "id": "t4",
+        "options": {},
+        "query": "AI短剧",
+        "result_limit": 40,
+        "source": "xhs"
+      }
+    ],
+    "terms": [
+      "AI短剧"
+    ]
+  },
+  "state": {
+    "collection_calls": 9,
+    "collection_usd": 0.09,
+    "errors": [],
+    "group_batches": [],
+    "groups": [],
+    "limit_cny": 1.2,
+    "stage": "collect",
+    "status": "running",
+    "tasks": {
+      "t1": {
+        "status": "ok",
+        "count": 20,
+        "errors": [],
+        "cost": {
+          "calls": {
+            "bili": 2
+          },
+          "failures": {},
+          "tokens": {},
+          "est_usd_tikhub": 0,
+          "tikhub_by_endpoint": {},
+          "est_cny_llm": 0.0
+        }
+      },
+      "t2": {
+        "status": "ok",
+        "count": 40,
+        "errors": [],
+        "cost": {
+          "calls": {
+            "tikhub": 1
+          },
+          "failures": {},
+          "tokens": {},
+          "est_usd_tikhub": 0.01,
+          "tikhub_by_endpoint": {
+            "search/fetch_video_search_v3": 0.01
+          },
+          "est_cny_llm": 0.0
+        }
+      },
+      "t3": {
+        "status": "ok",
+        "count": 40,
+        "errors": [],
+        "cost": {
+          "calls": {
+            "tikhub": 1
+          },
+          "failures": {},
+          "tokens": {},
+          "est_usd_tikhub": 0.01,
+          "tikhub_by_endpoint": {
+            "search/fetch_video_search_v3": 0.01
+          },
+          "est_cny_llm": 0.0
+        }
+      },
+      "t4": {
+        "status": "ok",
+        "count": 20,
+        "errors": [],
+        "cost": {
+          "calls": {
+            "tikhub": 1
+          },
+          "failures": {},
+          "tokens": {},
+          "est_usd_tikhub": 0.01,
+          "tikhub_by_endpoint": {
+            "app_v2/search_notes": 0.01
+          },
+          "est_cny_llm": 0.0
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "author": "腾飞漫剪",
+      "author_id": "3706997826390401",
+      "extra": {
+        "duration": 4896,
+        "tag": "一口气看完漫剧,AI漫剧,AI短剧,不烧心,漫剧,自制短剧,都市,剧情,人性,短剧",
+        "tname": "短片"
+      },
+      "id": "bili:BV13fHT6aEAo",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i1.hdslb.com/bfs/archive/93fc976f9d8ca48ebdc6fbb5edd3c18fa304ecfb.jpg",
+      "title": "【抢先版】你卖4块是吧？我TM免费送，而且老子的面不烧心",
+      "url": "https://www.bilibili.com/video/BV13fHT6aEAo",
+      "metrics": {
+        "comments": 525,
+        "danmaku": 1107,
+        "favorites": 2062,
+        "likes": 20068,
+        "views": 502313
+      },
+      "published_at": 1792856906.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "京晶漫剧",
+      "author_id": "3707017346681347",
+      "extra": {
+        "duration": 120,
+        "tag": "AI,剧情向,剧情,短剧,动画,AI短剧,漫剧,豪门,热点,故事",
+        "tname": "短片"
+      },
+      "id": "bili:BV13xnt6QEYd",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i0.hdslb.com/bfs/archive/b2187a80b087f640fb8a55c38b54a1c888c16f7c.jpg",
+      "title": "打嗝豪门继承人，换你你能打多少嗝~#ai短剧 #抽象 #ai漫剧 #剧情",
+      "url": "https://www.bilibili.com/video/BV13xnt6QEYd",
+      "metrics": {
+        "comments": 368,
+        "danmaku": 90,
+        "favorites": 1476,
+        "likes": 6636,
+        "views": 235093
+      },
+      "published_at": 1792751431.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "鳄鱼漫说",
+      "author_id": "3546648795941812",
+      "extra": {
+        "duration": 703,
+        "tag": "犯罪,剧情,鳄鱼缅北,原创,ai短剧,ai电影,园区",
+        "tname": "国产原创相关"
+      },
+      "id": "bili:BV15wnQ6xEFC",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i0.hdslb.com/bfs/archive/faddfaa7008e7c86220487f665eea42400f29fc9.jpg",
+      "title": "园区最神秘的部门：没有名字、不对外公开，却一个月做出4亿",
+      "url": "https://www.bilibili.com/video/BV15wnQ6xEFC",
+      "metrics": {
+        "comments": 597,
+        "danmaku": 311,
+        "favorites": 1761,
+        "likes": 3340,
+        "views": 248108
+      },
+      "published_at": 1793005200.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "夏眠片刻",
+      "author_id": "3546865618389421",
+      "extra": {
+        "duration": 7473,
+        "tag": "反派,短剧,ai短剧,漫剧,ai",
+        "tname": "影视杂谈"
+      },
+      "id": "bili:BV1C6HF6hEcg",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i1.hdslb.com/bfs/archive/046fbe858786d1fd0dfd8375b60ab8dacc127718.jpg",
+      "title": "反派情劫超纲了",
+      "url": "https://www.bilibili.com/video/BV1C6HF6hEcg",
+      "metrics": {
+        "comments": 5,
+        "danmaku": 1,
+        "favorites": 31264,
+        "likes": 4102,
+        "views": 275571
+      },
+      "published_at": 1793064526.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "夏眠片刻",
+      "author_id": "3546865618389421",
+      "extra": {
+        "duration": 2588,
+        "tag": "ai短剧,漫剧,ai,短剧",
+        "tname": "影视杂谈"
+      },
+      "id": "bili:BV1EknY6LETG",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i2.hdslb.com/bfs/archive/f8683207b953d68379040df6dbe0fdf8d2f965fa.jpg",
+      "title": "夫君嘴硬心软，与我共赴良缘",
+      "url": "https://www.bilibili.com/video/BV1EknY6LETG",
+      "metrics": {
+        "comments": 4,
+        "danmaku": 19,
+        "favorites": 21747,
+        "likes": 3547,
+        "views": 1012130
+      },
+      "published_at": 1792796018.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "秋桔-",
+      "author_id": "356511715",
+      "extra": {
+        "duration": 2895,
+        "tag": "AI,短剧,AI短剧,AI剧情大片,不烧心,漫剧,都市",
+        "tname": "原创音乐"
+      },
+      "id": "bili:BV1FexT6WELU",
+      "kind": "video",
+      "source": "bili",
+      "text": "八元包子少一个褶就倒一笼？八元包子被骂烧心？究竟谁才是真良心！\n我是“轻松剧场”的作者秋桔，除了我，站内其他视频均为盗传，谢谢大家的支持！\n也是看着自己的剧被莫名这么多人盗传，心凉了，必须自己来传！",
+      "thumb": "https://i1.hdslb.com/bfs/archive/2225eda7369f8f0e9e7d1b2af1d6d418e8e212a1.jpg",
+      "title": "【原创烧心短剧】十八元包子少一个褶就倒一笼？八元包子被骂烧心？究竟谁才是真良心！【AI全民制作人】",
+      "url": "https://www.bilibili.com/video/BV1FexT6WELU",
+      "metrics": {
+        "comments": 88,
+        "danmaku": 38,
+        "favorites": 6229,
+        "likes": 1922,
+        "views": 1509813
+      },
+      "published_at": 1793097731.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "庞贝哈",
+      "author_id": "355352250",
+      "extra": {
+        "duration": 887,
+        "tag": "爱情,此视频由AI爱生成,AI短剧,青春短片,救赎,小孩",
+        "tname": "影视剪辑"
+      },
+      "id": "bili:BV1UzHP6mEns",
+      "kind": "video",
+      "source": "bili",
+      "text": "-",
+      "thumb": "https://i2.hdslb.com/bfs/archive/d98539bee8249dbcf1d75119db7d3fa194a910c5.jpg",
+      "title": "两个缺爱的小孩，相遇之后学会互相守护！《遇见你真好》第一季【AI全民制作人】",
+      "url": "https://www.bilibili.com/video/BV1UzHP6mEns",
+      "metrics": {
+        "comments": 0,
+        "danmaku": 0,
+        "favorites": 2786,
+        "likes": 592,
+        "views": 712342
+      },
+      "published_at": 1792823966.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "夏眠片刻",
+      "author_id": "3546865618389421",
+      "extra": {
+        "duration": 5581,
+        "tag": "反派,短剧,ai短剧,漫剧,ai,夫妻,男女",
+        "tname": "影视杂谈"
+      },
+      "id": "bili:BV1Y7xV6bE97",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i2.hdslb.com/bfs/archive/01978f06e5c3edb8c0b3537b95fdffed09a14f64.jpg",
+      "title": "反派夫妻双穿男女主统统靠边",
+      "url": "https://www.bilibili.com/video/BV1Y7xV6bE97",
+      "metrics": {
+        "comments": 6,
+        "danmaku": 2,
+        "favorites": 26192,
+        "likes": 3811,
+        "views": 360884
+      },
+      "published_at": 1793138575.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "闲夜空茫",
+      "author_id": "36024653",
+      "extra": {
+        "duration": 1058,
+        "tag": "UP！AI小剧场,AIGC,永雏塔菲,大肥鱼,烧心,冰冰冰,抽象,AI,二次元,动漫",
+        "tname": "同人·手书"
+      },
+      "id": "bili:BV1cFnd6VEJ3",
+      "kind": "video",
+      "source": "bili",
+      "text": "看我干嘛看视频啊",
+      "thumb": "https://i2.hdslb.com/bfs/archive/576ea71c6fe93bc07fff110fc5ca9debcb01c45d.jpg",
+      "title": "【神人短剧】厨亡争霸赛之决战棍母之巅，神人tv最新力作【AI全民制作人】",
+      "url": "https://www.bilibili.com/video/BV1cFnd6VEJ3",
+      "metrics": {
+        "comments": 4290,
+        "danmaku": 2140,
+        "favorites": 19363,
+        "likes": 52770,
+        "views": 514264
+      },
+      "published_at": 1793008783.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "鳄鱼漫说",
+      "author_id": "3546648795941812",
+      "extra": {
+        "duration": 527,
+        "tag": "犯罪,剧情,原创,鳄鱼缅北,ai短剧,ai电影",
+        "tname": "国产原创相关"
+      },
+      "id": "bili:BV1eKnh6wEak",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i0.hdslb.com/bfs/archive/e38e18666ca97741bc0aebfd35e51f7b41780902.jpg",
+      "title": "为了给丈夫治病，她想靠投资多赚点钱，最后50万救命钱全被骗光",
+      "url": "https://www.bilibili.com/video/BV1eKnh6wEak",
+      "metrics": {
+        "comments": 147,
+        "danmaku": 217,
+        "favorites": 1615,
+        "likes": 2745,
+        "views": 712805
+      },
+      "published_at": 1792761660.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "烟雨AIGC",
+      "author_id": "3706954025273358",
+      "extra": {
+        "duration": 566,
+        "tag": "ai短剧,悬疑推理,悬疑,AI剧情大片",
+        "tname": "日常"
+      },
+      "id": "bili:BV1eTH56nE88",
+      "kind": "video",
+      "source": "bili",
+      "text": "《雨幕循环》",
+      "thumb": "https://i1.hdslb.com/bfs/archive/09a21c4dcd9b85b776ff0bd084152cb16e8b19a9.jpg",
+      "title": "\"我做了一件这辈子都不敢做的事\"",
+      "url": "https://www.bilibili.com/video/BV1eTH56nE88",
+      "metrics": {
+        "comments": 49,
+        "danmaku": 30,
+        "favorites": 15765,
+        "likes": 5062,
+        "views": 1042728
+      },
+      "published_at": 1792926689.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "AI漫剧我来了",
+      "author_id": "436389837",
+      "extra": {
+        "duration": 2101,
+        "tag": "人性,完整版,一口气看完漫剧,AI漫剧,二次元,动漫,ai短剧,爽剧,漫剧,室友",
+        "tname": "小剧场"
+      },
+      "id": "bili:BV1gVxu61EQK",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i1.hdslb.com/bfs/archive/439729f9223ab3e76111162c72aaceb57cd2e622.jpg",
+      "title": "【已完结】室友从来不清理垃圾最后垃圾头长出恶心的虫子，她却怪我们不提醒",
+      "url": "https://www.bilibili.com/video/BV1gVxu61EQK",
+      "metrics": {
+        "comments": 6,
+        "danmaku": 3,
+        "favorites": 14999,
+        "likes": 1897,
+        "views": 734278
+      },
+      "published_at": 1793113626.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "鳄鱼漫说",
+      "author_id": "3546648795941812",
+      "extra": {
+        "duration": 539,
+        "tag": "鳄鱼缅北,ai短剧,ai电影,犯罪,悬疑,剧情,原创",
+        "tname": "国产原创相关"
+      },
+      "id": "bili:BV1gan86xESJ",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i1.hdslb.com/bfs/archive/d4ee18133b9ab52c1a94fce701d08af12389fa05.jpg",
+      "title": "园区一千多万一夜消失，男人把三个嫌疑人拉进狗场挨个审",
+      "url": "https://www.bilibili.com/video/BV1gan86xESJ",
+      "metrics": {
+        "comments": 254,
+        "danmaku": 187,
+        "favorites": 1739,
+        "likes": 2893,
+        "views": 550626
+      },
+      "published_at": 1792762159.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "云漫AI短剧",
+      "author_id": "503199264",
+      "extra": {
+        "duration": 2965,
+        "tag": "Q版人物小形象,AI月月抢位赛,updream,甜蜜治愈,甜,AI,猫咪,治愈,原创,记录",
+        "tname": "同人·手书"
+      },
+      "id": "bili:BV1iAnh6PESu",
+      "kind": "video",
+      "source": "bili",
+      "text": "《我和他和猫》",
+      "thumb": "https://i0.hdslb.com/bfs/archive/189bcd3d44f1183494603b7c4ef50f70c0d3af66.jpg",
+      "title": "我和他和猫【AI月月抢位赛】",
+      "url": "https://www.bilibili.com/video/BV1iAnh6PESu",
+      "metrics": {
+        "comments": 1,
+        "danmaku": 11,
+        "favorites": 4920,
+        "likes": 2900,
+        "views": 275616
+      },
+      "published_at": 1792762136.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "超正经的小李",
+      "author_id": "317783104",
+      "extra": {
+        "duration": 533,
+        "tag": "UP主原创剧场,雀巢工作室,漫剧,AI,人工智能,梦想,短剧,搞笑,兄弟,爱情",
+        "tname": "搞笑"
+      },
+      "id": "bili:BV1ment6LEBR",
+      "kind": "video",
+      "source": "bili",
+      "text": "好视频，值得等...\n求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！求关注！求三连！",
+      "thumb": "https://i0.hdslb.com/bfs/archive/87061a826f50d9a38447f70f3ad6f14649175bc4.jpg",
+      "title": "偷看了兄弟的ai生成记录....",
+      "url": "https://www.bilibili.com/video/BV1ment6LEBR",
+      "metrics": {
+        "comments": 381,
+        "danmaku": 1126,
+        "favorites": 4473,
+        "likes": 21106,
+        "views": 545854
+      },
+      "published_at": 1792750448.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "蓝皮小光鼠",
+      "author_id": "395466896",
+      "extra": {
+        "duration": 119,
+        "tag": "校园,UP！AI小剧场,updream,AI短剧,学生",
+        "tname": "网络游戏"
+      },
+      "id": "bili:BV1oxHK6NEvT",
+      "kind": "video",
+      "source": "bili",
+      "text": "不代表任何学校！",
+      "thumb": "https://i0.hdslb.com/bfs/archive/ea80d2a326f08b7e5e9db562943f7d65bb9323e8.jpg",
+      "title": "在强制住宿的高中有多绝望【AI全民制作人】",
+      "url": "https://www.bilibili.com/video/BV1oxHK6NEvT",
+      "metrics": {
+        "comments": 58,
+        "danmaku": 36,
+        "favorites": 666,
+        "likes": 722,
+        "views": 694222
+      },
+      "published_at": 1792842940.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "墨八分钱",
+      "author_id": "386600212",
+      "extra": {
+        "duration": 136,
+        "tag": "虎皮笋,AI剧情大片,AI剧情,AI短剧,户外美食,盟军",
+        "tname": "美食侦探"
+      },
+      "id": "bili:BV1q8x56uEDU",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i1.hdslb.com/bfs/archive/aefc2d1e10fc068a04e4df1f2d96ff3a4c3f3623.jpg",
+      "title": "1944滇缅竹林：远征军教盟军吃虎皮笋，油手把风笛吹成妖笛【AI全民制作人】",
+      "url": "https://www.bilibili.com/video/BV1q8x56uEDU",
+      "metrics": {
+        "comments": 250,
+        "danmaku": 172,
+        "favorites": 4034,
+        "likes": 20548,
+        "views": 717943
+      },
+      "published_at": 1793158589.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "AI漫剧我来了",
+      "author_id": "436389837",
+      "extra": {
+        "duration": 3574,
+        "tag": "完整版,一口气看完漫剧,AI漫剧,ai短剧,爽剧,漫剧,月嫂,父母,二次元,动漫",
+        "tname": "小剧场"
+      },
+      "id": "bili:BV1rXna6UEHt",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i0.hdslb.com/bfs/archive/625b3582bccfb0ebd3cb5d687599bba38eabf2ff.jpg",
+      "title": "【已完结】妈妈给我请的月嫂，为啥每天都在照顾小姑子？",
+      "url": "https://www.bilibili.com/video/BV1rXna6UEHt",
+      "metrics": {
+        "comments": 23,
+        "danmaku": 45,
+        "favorites": 3066,
+        "likes": 517,
+        "views": 298803
+      },
+      "published_at": 1792771841.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "酷酷man妈",
+      "author_id": "3747575479929410",
+      "extra": {
+        "duration": 77598,
+        "tag": "AI,AI漫剧,AI真人短剧,即梦AI,AI短剧,AI视频制作,AI视频生成,AI电影,AI动画,AI视频教程",
+        "tname": "职业职场"
+      },
+      "id": "bili:BV1rknZ6HERF",
+      "kind": "video",
+      "source": "bili",
+      "text": "本套教程从最基础的AI漫剧核心开始到AIGC相关技术的宏观运用，名校名师+央企大佬全程结合项目实战，不仅适合零基础小白学习，也适合有一定基础的同学进阶提升、巩固学习。\n如果觉得视频对你有帮助，就动手多多转发一下吧~",
+      "thumb": "https://i1.hdslb.com/bfs/archive/0ac8d3353459bae70bd88cb69acc636a44ae1583.png",
+      "title": "【WorkBuddyAI漫剧】吊打付费课！B站超全保姆级教程，从0到独立出片！剧本+分镜+人物+视频+配音+剪辑全流程实战教学！",
+      "url": "https://www.bilibili.com/video/BV1rknZ6HERF",
+      "metrics": {
+        "comments": 6,
+        "danmaku": 0,
+        "favorites": 727,
+        "likes": 6097,
+        "views": 285488
+      },
+      "published_at": 1793019453.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "夏眠片刻",
+      "author_id": "3546865618389421",
+      "extra": {
+        "duration": 9367,
+        "tag": "ai短剧,漫剧,ai,短剧",
+        "tname": "影视杂谈"
+      },
+      "id": "bili:BV1swnX65E1H",
+      "kind": "video",
+      "source": "bili",
+      "text": "",
+      "thumb": "https://i0.hdslb.com/bfs/archive/f5d37eb191e0962d1ad9d3dcef34691f494e167f.jpg",
+      "title": "万人迷觉醒：男主们为她沉沦",
+      "url": "https://www.bilibili.com/video/BV1swnX65E1H",
+      "metrics": {
+        "comments": 6,
+        "danmaku": 11,
+        "favorites": 20583,
+        "likes": 2550,
+        "views": 207398
+      },
+      "published_at": 1792977743.0,
+      "queries": [
+        "bili:AI短剧"
+      ],
+      "query": "bili:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t1"
+      ]
+    },
+    {
+      "author": "桃桃剧场",
+      "author_id": "桃桃剧场",
+      "extra": {
+        "duration": 174,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698541782467923254",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-ca21bf/o8g0ji065TtIPIQ1hMjspWHoyB5tIdEaEMtUF~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=999%2FRfuG8o1gTtwtCY9zTtGcGJw%3D",
+      "title": "#人鱼归来护深海  #因为一个片段看了整部剧   #ai短剧  #短剧推荐  #ai漫剧",
+      "url": "https://www.douyin.com/video/7698541782467923254",
+      "metrics": {
+        "followers": 876407,
+        "index": 59012,
+        "likes": 13505,
+        "views": null
+      },
+      "published_at": 1793001603.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "桃桃剧场",
+      "author_id": "桃桃剧场",
+      "extra": {
+        "duration": 124,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698541803762502954",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-ca21bf/oEGIDQRygTFiACWoetovZ1aBNaaeU7Qx3uXZDm~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=J66cVz%2FJsTs3MFm%2F%2B2iZVeHLbpE%3D",
+      "title": "#人鱼归来护深海  #因为一个片段看了整部剧   #ai短剧  #短剧推荐  #ai漫剧",
+      "url": "https://www.douyin.com/video/7698541803762502954",
+      "metrics": {
+        "followers": 876407,
+        "index": 57137,
+        "likes": 10271,
+        "views": null
+      },
+      "published_at": 1793001604.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "桃桃剧场",
+      "author_id": "桃桃剧场",
+      "extra": {
+        "duration": 151,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698541826252328211",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-p-ca21bf/oYINzCPRdI2t0om00BniWATTQT3MEIsEgatYq~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=gat8yiTyZN7XbYYS1uYPtiWHpi4%3D",
+      "title": "#人鱼归来护深海  #因为一个片段看了整部剧   #ai短剧  #短剧推荐  #ai漫剧",
+      "url": "https://www.douyin.com/video/7698541826252328211",
+      "metrics": {
+        "followers": 876407,
+        "index": 49124,
+        "likes": 8979,
+        "views": null
+      },
+      "published_at": 1793001605.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 46,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616445889989929",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616445889989929",
+      "metrics": {
+        "followers": 73757,
+        "index": 50722,
+        "likes": 32441,
+        "views": null
+      },
+      "published_at": 1792649108.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616454375165203",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616454375165203",
+      "metrics": {
+        "followers": 73757,
+        "index": 52241,
+        "likes": 31456,
+        "views": null
+      },
+      "published_at": 1792649109.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616485727554859",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616485727554859",
+      "metrics": {
+        "followers": 73757,
+        "index": 50160,
+        "likes": 37554,
+        "views": null
+      },
+      "published_at": 1792649110.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 48,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616520666025243",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616520666025243",
+      "metrics": {
+        "followers": 73757,
+        "index": 48298,
+        "likes": 34714,
+        "views": null
+      },
+      "published_at": 1792649111.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616536055008575",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616536055008575",
+      "metrics": {
+        "followers": 73757,
+        "index": 47502,
+        "likes": 36242,
+        "views": null
+      },
+      "published_at": 1792649112.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616567189212458",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616567189212458",
+      "metrics": {
+        "followers": 73757,
+        "index": 47066,
+        "likes": 35356,
+        "views": null
+      },
+      "published_at": 1792649113.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 46,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616587670064411",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616587670064411",
+      "metrics": {
+        "followers": 73757,
+        "index": 46578,
+        "likes": 30559,
+        "views": null
+      },
+      "published_at": 1792649114.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616616703069478",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616616703069478",
+      "metrics": {
+        "followers": 73757,
+        "index": 46765,
+        "likes": 29814,
+        "views": null
+      },
+      "published_at": 1792649115.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 46,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616639444569354",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616639444569354",
+      "metrics": {
+        "followers": 73757,
+        "index": 45221,
+        "likes": 32296,
+        "views": null
+      },
+      "published_at": 1792649116.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 46,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616656154594579",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616656154594579",
+      "metrics": {
+        "followers": 73757,
+        "index": 45689,
+        "likes": 31462,
+        "views": null
+      },
+      "published_at": 1792649117.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616682339683638",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616682339683638",
+      "metrics": {
+        "followers": 73757,
+        "index": 43378,
+        "likes": 29798,
+        "views": null
+      },
+      "published_at": 1792649118.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "安萤说漫",
+      "author_id": "安萤说漫",
+      "extra": {
+        "duration": 47,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7698616702820437267",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/95d810adcd3a34abae78546ca62aa9ff~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=wG%2B8uUwgc7oG%2F2je%2BoywvAHsiQU%3D",
+      "title": "顾驰重生回到大学开学，不再执着追逐校花苏曼，利用前世记忆，抓住学区规划机遇，倾尽手里资金购入十套老旧小户型。他结识聪慧理性的梁宁，二人合伙做起房屋托管创业。期间遭遇卖家反悔、对手抄袭项目、家庭公司危机等重重风波，顾驰坚守底线，凭借判断力与务实闯过难关。事业稳步发展，他与并肩作战的梁宁互生情愫，懂得尊重彼此的理想，携手收获事业与真挚的爱情。#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7698616702820437267",
+      "metrics": {
+        "followers": 73757,
+        "index": 42342,
+        "likes": 26472,
+        "views": null
+      },
+      "published_at": 1792649119.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "桃洮逃不掉",
+      "author_id": "桃洮逃不掉",
+      "extra": {
+        "duration": 13,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699307909662350179",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/owb43Vfu8ACeIVMLB4py2fgAdX7Fts0ouGQQBI~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=kNS2apWdqw9pH3Q8I80d%2BL8BGd4%3D",
+      "title": "当学生知道老师最近沉迷AI短剧时 #校园搞笑 #高中 #高中日常 原创@亦山13",
+      "url": "https://www.douyin.com/video/7699307909662350179",
+      "metrics": {
+        "followers": 13611,
+        "index": 16610,
+        "likes": 104898,
+        "views": null
+      },
+      "published_at": 1792634817.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "C位娱子酱",
+      "author_id": "C位娱子酱",
+      "extra": {
+        "duration": 59,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7699336458011725082",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oQ2AyBEYFYDB9tg9hJQDFBZAfkCDfqQAi3IIzR~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=YTngnczO1%2FzFPXRMYEu1mrIzUNo%3D",
+      "title": "AI短剧诚不欺我 真有这样立规矩的老板啊（部分画面是AI）#规矩立住了 #短剧 #潮汕牛肉火锅 #不烧心 #万万没想到",
+      "url": "https://www.douyin.com/video/7699336458011725082",
+      "metrics": {
+        "followers": 1546240,
+        "index": 79819,
+        "likes": 48612,
+        "views": null
+      },
+      "published_at": 1792641466.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "漫漫AI",
+      "author_id": "漫漫AI",
+      "extra": {
+        "duration": 178,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699557568573639987",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/ocbd1DAQyqFlAvIfAg80CDq7oO9V2AcJEQUBFe~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=KL6cj0EOfod21PLCcA6q7YP7hc0%3D",
+      "title": "《一嗝定豪门》 今天,你打嗝了吗?#女频短剧 #二次元动漫 #AI短剧",
+      "url": "https://www.douyin.com/video/7699557568573639987",
+      "metrics": {
+        "followers": 5637,
+        "index": 128127,
+        "likes": 67831,
+        "views": null
+      },
+      "published_at": 1792692953.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "央视新闻",
+      "author_id": "央视新闻",
+      "extra": {
+        "duration": 369,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7699711109510499624",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/ok9B4FArCCXff62SmqBwA8CarpQAQKi6Dt3nEg~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=J8VJy9wUoa3KKsia9MEotRfAE%2F4%3D",
+      "title": "#AI短剧我在长征路上 我是央视新闻时空记者小裴，1935年2月，云南扎西，在这里，我看到3000多扎西子弟踊跃参加红军，登记处前排起长队……#红星照耀中国 #长征胜利90周年 #AI万里绘征途 #央视新闻微短剧 （AI支持：小云雀AI）",
+      "url": "https://www.douyin.com/video/7699711109510499624",
+      "metrics": {
+        "followers": 188256943,
+        "index": 98070,
+        "likes": 447697,
+        "views": null
+      },
+      "published_at": 1792728698.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "央视新闻",
+      "author_id": "央视新闻",
+      "extra": {
+        "duration": 379,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7699800914319641896",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-p-0015/ogefyFoOAoV99D7zQcKAF5LabEEA2qaNgBBbQJ~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=6HquwvzKBYY%2BCDwNR1%2FU6LW18PU%3D",
+      "title": "#AI短剧我在长征路上 1935年5月，四川安顺场渡口，红军17名勇士和帅仕高等船工，正冒着敌人的炮火，强渡大渡河……#红星照耀中国#长征胜利90周年#AI万里绘征途 #央视新闻微短剧（AI支持：小云雀AI）",
+      "url": "https://www.douyin.com/video/7699800914319641896",
+      "metrics": {
+        "followers": 188256943,
+        "index": 47226,
+        "likes": 375216,
+        "views": null
+      },
+      "published_at": 1792749607.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "天工剧场",
+      "author_id": "天工剧场",
+      "extra": {
+        "duration": 42,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699835434502851875",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-ca21bf/ooeaQGtq0fjBaEhBlV5rhaQgql1np7mqHgCe6A~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=0TPVPbOKCO8VKOGOby9SrY0ZC9I%3D",
+      "title": "《女主是绿茶大学生，但我是硬核辅导员》 #热点 #AI #AI短剧",
+      "url": "https://www.douyin.com/video/7699835434502851875",
+      "metrics": {
+        "followers": 9706,
+        "index": 14224,
+        "likes": 5951,
+        "views": null
+      },
+      "published_at": 1792836011.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "心动漫剧社",
+      "author_id": "心动漫剧社",
+      "extra": {
+        "duration": 42,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699908461882084635",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-i-dy/49b22479e23781b5d37b966251b04aa0~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=ZMqJm1rkSQ0Ihx87uFhGdf%2BNn4U%3D",
+      "title": "#热门短剧推荐 #因为一个片段看了整部剧 #ai短剧",
+      "url": "https://www.douyin.com/video/7699908461882084635",
+      "metrics": {
+        "followers": 42474,
+        "index": 14487,
+        "likes": 3281,
+        "views": null
+      },
+      "published_at": 1792835884.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "心动漫剧社",
+      "author_id": "心动漫剧社",
+      "extra": {
+        "duration": 37,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699908495994293531",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-i-dy/49b22479e23781b5d37b966251b04aa0~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=ZMqJm1rkSQ0Ihx87uFhGdf%2BNn4U%3D",
+      "title": "#热门短剧推荐 #因为一个片段看了整部剧 #ai短剧",
+      "url": "https://www.douyin.com/video/7699908495994293531",
+      "metrics": {
+        "followers": 42474,
+        "index": 13557,
+        "likes": 2683,
+        "views": null
+      },
+      "published_at": 1792835885.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "心动漫剧社",
+      "author_id": "心动漫剧社",
+      "extra": {
+        "duration": 42,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699908523538337078",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-i-dy/49b22479e23781b5d37b966251b04aa0~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=ZMqJm1rkSQ0Ihx87uFhGdf%2BNn4U%3D",
+      "title": "#热门短剧推荐 #因为一个片段看了整部剧 #ai短剧",
+      "url": "https://www.douyin.com/video/7699908523538337078",
+      "metrics": {
+        "followers": 42474,
+        "index": 13808,
+        "likes": 2568,
+        "views": null
+      },
+      "published_at": 1792835886.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "心动漫剧社",
+      "author_id": "心动漫剧社",
+      "extra": {
+        "duration": 40,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699908605222358312",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-i-dy/49b22479e23781b5d37b966251b04aa0~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=ZMqJm1rkSQ0Ihx87uFhGdf%2BNn4U%3D",
+      "title": "#热门短剧推荐 #因为一个片段看了整部剧 #ai短剧",
+      "url": "https://www.douyin.com/video/7699908605222358312",
+      "metrics": {
+        "followers": 42474,
+        "index": 13517,
+        "likes": 1932,
+        "views": null
+      },
+      "published_at": 1792835890.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "宇量剧场",
+      "author_id": "宇量剧场",
+      "extra": {
+        "duration": 40,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7699938658366803234",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-i-dy/3e131ecad16d46249930c29dbdf2ef5a~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=fuDMXJmap0G%2BdN0SXrZ7Bsv5wUQ%3D",
+      "title": "他是赛车场上最年轻的三连冠，却有个不为人知的烦恼——多年来难以入眠。安眠是海边小镇的民宿姑娘，爱熬晚安糖、做栀子花皂，日子温柔踏实。一次海边偶遇，他在她身边睡了个久违的安稳觉，从此只要有她在，就能安心入睡。赛道上的冷面车神，在她面前却卸下防备。为何独独是她？#AI短剧 #AI漫剧 #动态漫 #我在抖音看动漫",
+      "url": "https://www.douyin.com/video/7699938658366803234",
+      "metrics": {
+        "followers": 10392,
+        "index": 18992,
+        "likes": 55803,
+        "views": null
+      },
+      "published_at": 1792944547.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "以剧为镜",
+      "author_id": "以剧为镜",
+      "extra": {
+        "duration": 488,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700016036133857216",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/ogATAA8qDioBE92ImMbfBi823BOlQfA33snz8g~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=V%2BxfxoC8Fcq7ukse1vQqp58jWFw%3D",
+      "title": "#AI短剧",
+      "url": "https://www.douyin.com/video/7700016036133857216",
+      "metrics": {
+        "followers": 37164,
+        "index": 32149,
+        "likes": 23811,
+        "views": null
+      },
+      "published_at": 1792799690.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "漫漫AI",
+      "author_id": "漫漫AI",
+      "extra": {
+        "duration": 179,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700108851588205858",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oAiq9pdBoAflD96mgQFQ3RNDQf7av5EEAABPcQ~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=YoD%2FJFtY%2Bw7LyIiNn2bFyphJJAI%3D",
+      "title": "《一嗝定豪门》TWO 正儿八经的你们不看，就爱看这种颠的，臣妾也无奈啊。#女频短剧 #二次元动漫 #AI短剧",
+      "url": "https://www.douyin.com/video/7700108851588205858",
+      "metrics": {
+        "followers": 5637,
+        "index": 28206,
+        "likes": 19464,
+        "views": null
+      },
+      "published_at": 1792821306.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "第零号片场",
+      "author_id": "第零号片场",
+      "extra": {
+        "duration": 180,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700140819482807615",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/owTIDIX9gAz6AegI9Ff7FqDBDC3FIEAXQADuBc~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=qgYwLLdxdGmvaEKxaaJrJhdhpNA%3D",
+      "title": "《洛城黑警》第1集 洛圣都，你们的新king来了!#ai短剧 #剧情 #ai创作浪潮计划 #GTA#无耻之徒",
+      "url": "https://www.douyin.com/video/7700140819482807615",
+      "metrics": {
+        "followers": 19222,
+        "index": 14567,
+        "likes": 30888,
+        "views": null
+      },
+      "published_at": 1792836000.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "兽医汪杰（眼科）",
+      "author_id": "兽医汪杰（眼科）",
+      "extra": {
+        "duration": 20,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700141181174336819",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/okMVCcQ3IdKLsPZANALQuw0e7k9dGBHtBejQfa~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=DKEGHoLL79ghsORdLgqPfmln9kc%3D",
+      "title": "做兽医的太抢手了，不好找啊 #兽医 #宠物医生 #短剧 #ai短剧",
+      "url": "https://www.douyin.com/video/7700141181174336819",
+      "metrics": {
+        "followers": 3868,
+        "index": 19209,
+        "likes": 7255,
+        "views": null
+      },
+      "published_at": 1792840800.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "声岛·Soniclslet",
+      "author_id": "声岛·Soniclslet",
+      "extra": {
+        "duration": 176,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700162707470699803",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/o4ukeH22DQ2NQ4wiAmFKNI9gzBfjqaAQETgWA3~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=b9ihWJCZHzLOF271sHzP2zbN1RY%3D",
+      "title": "熊出没四季篇，为什么被称为系列巅峰之作？ #熊出没 #熊出没四季篇 #童年动画  #ai短剧 #童年回忆",
+      "url": "https://www.douyin.com/video/7700162707470699803",
+      "metrics": {
+        "followers": 10773,
+        "index": 15129,
+        "likes": 46780,
+        "views": null
+      },
+      "published_at": 1792833844.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "西瓜小狗🍉",
+      "author_id": "西瓜小狗🍉",
+      "extra": {
+        "duration": 113,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700168483945925929",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/o8aCu7bANPlGr6hyNq67eletBsBLxeIVAgEgSw~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=BgUfTNonA7OJ5pXO9cYOxwWlmBY%3D",
+      "title": "什么臭袜才能成为臭袜继承人？？ #AI短剧#抽象艺术",
+      "url": "https://www.douyin.com/video/7700168483945925929",
+      "metrics": {
+        "followers": 14167,
+        "index": 86209,
+        "likes": 86159,
+        "views": null
+      },
+      "published_at": 1792835192.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "漫漫星路",
+      "author_id": "漫漫星路",
+      "extra": {
+        "duration": 390,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700417511283576106",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oU9VpCgQiEI44PfqAlCpIXIdf3AHOBAC0Dp93F~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=bXNQ3UvPfyJQa0Az5fZ0phGPnR0%3D",
+      "title": "（1-3合集）房东要涨房租，那我不租了！ #AI #AI漫剧 #AI短剧 #爽剧 #精彩片段 \n细心爱惜出租屋四年的周荷遭房东趁学区租金上涨坐地涨价，她果断搬走；房东高价换来隐瞒养宠的新租客后麻烦不断，才明白一个省心的好租客远比多收那点房租值钱。",
+      "url": "https://www.douyin.com/video/7700417511283576106",
+      "metrics": {
+        "followers": 4771,
+        "index": 14328,
+        "likes": 28520,
+        "views": null
+      },
+      "published_at": 1792901040.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "一只妙脆角猫",
+      "author_id": "一只妙脆角猫",
+      "extra": {
+        "duration": 84,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700448178604150058",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oEBAAR9lAJcBvLGV7HeCB9FS8IQfQaL662HueG~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=jInToCaScB%2BmUJtF6nq8WLoOo24%3D",
+      "title": "尿族千之范晓晴 #雷霆#ai短剧#剧情#搞笑#豪门",
+      "url": "https://www.douyin.com/video/7700448178604150058",
+      "metrics": {
+        "followers": 13205,
+        "index": 18032,
+        "likes": 2218,
+        "views": null
+      },
+      "published_at": 1792900312.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "王记盐水鸭",
+      "author_id": "王记盐水鸭",
+      "extra": {
+        "duration": 233,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700484896251087498",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oYhkAddieCIfT3XCngCsZIRbEAI1P9BkrzjAiB~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=VxHGTg%2FHWtQd1zHHRRZjcJvXxgk%3D",
+      "title": "《老街微光》｜当年众人托举，今日千里还恩，不忘老街善意#人间温暖 #ai短剧",
+      "url": "https://www.douyin.com/video/7700484896251087498",
+      "metrics": {
+        "followers": 14760,
+        "index": 68488,
+        "likes": 37056,
+        "views": null
+      },
+      "published_at": 1792908855.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "千帧剧场",
+      "author_id": "千帧剧场",
+      "extra": {
+        "duration": 235,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700522985412906267",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oIIcPggsvEeMvUWqAgJoQwQdfDA3PBANUDz93F~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=4SRE1NdL%2FvSigfy7FBBPqfwguLk%3D",
+      "title": "#男频  #ai漫剧  #ai短剧",
+      "url": "https://www.douyin.com/video/7700522985412906267",
+      "metrics": {
+        "followers": 41714,
+        "index": 14547,
+        "likes": 12167,
+        "views": null
+      },
+      "published_at": 1792917731.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "YWZZ",
+      "author_id": "YWZZ",
+      "extra": {
+        "duration": 148,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700537739367730468",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oQQvjLA9gdBIPITZjkDXEiuwFEltziIaA3YW7~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=HDtRid0HeNGA7QnyCW5qqq25ro8%3D",
+      "title": "《七日异常事务所》第三集。海怪，灯塔 怎么还有海盗...#ai短剧 #搞笑  #七日世界 #七日世界新星计划 #七日怪奇世界",
+      "url": "https://www.douyin.com/video/7700537739367730468",
+      "metrics": {
+        "followers": 9870,
+        "index": 17481,
+        "likes": 11445,
+        "views": null
+      },
+      "published_at": 1792921166.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "橙子姐姐🍊",
+      "author_id": "橙子姐姐🍊",
+      "extra": {
+        "duration": 186,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700541666125565210",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/okGVALfnrAf2H7dSAQFau0GDGfoE2B5EBBCDdQ~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=o%2Ba%2FDhA2ElIZEI6wAxeKb13%2BULM%3D",
+      "title": "年下弟弟 真废姐姐 pavo 他是青春没有售价，我是身体快要散架！  #ai短剧 #pavoai #pavo #年下弟弟",
+      "url": "https://www.douyin.com/video/7700541666125565210",
+      "metrics": {
+        "followers": 6611,
+        "index": 20608,
+        "likes": 17096,
+        "views": null
+      },
+      "published_at": 1792922077.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "香菜左转不送",
+      "author_id": "香菜左转不送",
+      "extra": {
+        "duration": 196,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700551246985383219",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oYlg5g2dAR0Au1C1eV9BARWapiIcIBid872bfB~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=utilqCZZ1gjW12tDOAuD8tC7iO4%3D",
+      "title": "黑暗M78 第66集#ai短剧#ai创作浪潮计划#奥特曼#特摄剧#提欧奥特曼",
+      "url": "https://www.douyin.com/video/7700551246985383219",
+      "metrics": {
+        "followers": 590469,
+        "index": 51936,
+        "likes": 68507,
+        "views": null
+      },
+      "published_at": 1793059200.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "我不爱睡觉",
+      "author_id": "我不爱睡觉",
+      "extra": {
+        "duration": 54,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700569061495030193",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/okWAbJfEYgusVaiQjIDo7eAO5BEFFSBWDo7e6d~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=w3ax6LrNJ2LSMTEemqfEi5AsAnc%3D",
+      "title": "GTA之小店主理人 脑洞提供@33z  #gta #服装店搞笑视频 #AI短剧 #服装店日常",
+      "url": "https://www.douyin.com/video/7700569061495030193",
+      "metrics": {
+        "followers": 10390,
+        "index": 36947,
+        "likes": 6379,
+        "views": null
+      },
+      "published_at": 1792928451.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "大帅",
+      "author_id": "大帅",
+      "extra": {
+        "duration": 12,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700583364554313914",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/o42G5LThBGNeHedZ8rFWA8cdo9IDI72IGe9eIA~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=jFiHFk1UzzqIZdJmT3cnYBe%2FYuw%3D",
+      "title": "内蒙人生病了吃必须要吃啥？ #感冒吃什么 #古装剧角色 #Ai短剧 #内蒙古文旅推荐官 #可乐文化传媒",
+      "url": "https://www.douyin.com/video/7700583364554313914",
+      "metrics": {
+        "followers": 9300,
+        "index": 52524,
+        "likes": 12015,
+        "views": null
+      },
+      "published_at": 1792931781.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "蓝胖子不胖",
+      "author_id": "蓝胖子不胖",
+      "extra": {
+        "duration": 75,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700612998750145835",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-i-dy/af18d190c67edb7a181312086d5a192a~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=YekbFGPJ7zl8vGAGWoxA1%2FoVjgw%3D",
+      "title": "#Ai短剧 #落雪无声长兄如父",
+      "url": "https://www.douyin.com/video/7700612998750145835",
+      "metrics": {
+        "followers": 16439501,
+        "index": 52364,
+        "likes": 6148,
+        "views": null
+      },
+      "published_at": 1792938690.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "等会再爱你",
+      "author_id": "等会再爱你",
+      "extra": {
+        "duration": 933,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700653745767484672",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-fd6e84/o0ZBvwVgee6M5CzNAHayG8QoWRnLeCvOTwj03Q~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=MG2fo4kPa90Xiq6FMpljxQsHRrA%3D",
+      "title": "唐人街来了个颠佬1-7集纯享 #aigc #ai短剧 #ai创作者计划 #即梦AI创作者成长计划",
+      "url": "https://www.douyin.com/video/7700653745767484672",
+      "metrics": {
+        "followers": 20205,
+        "index": 35523,
+        "likes": 47517,
+        "views": null
+      },
+      "published_at": 1792948174.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "AIGC创影",
+      "author_id": "AIGC创影",
+      "extra": {
+        "duration": 30,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700654171070180069",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/osQOCIEAVeJLEbyeC7LIg8GtBvA7E9PggDeZ8G~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=LgyhjgeXX9kATap4gXoSf3bfFP8%3D",
+      "title": "《欢乐中印一家人》第十三集 #狗血剧情 #搞笑剧情 #ai短剧",
+      "url": "https://www.douyin.com/video/7700654171070180069",
+      "metrics": {
+        "followers": 14691,
+        "index": 18312,
+        "likes": 14602,
+        "views": null
+      },
+      "published_at": 1792965600.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "LE良ON🍀AI筑基境",
+      "author_id": "LE良ON🍀AI筑基境",
+      "extra": {
+        "duration": 32,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700815917223376817",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/oMAC9XGjWvFoMle178sDZwB0gOQnJejgeViYQ0~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=litqBMDpKi0euhtogXs3aSbzYDw%3D",
+      "title": "你特么还是把我丢地上吧！ #搞笑视频 #AI短剧#脑洞大开 #孙权 #原创作品",
+      "url": "https://www.douyin.com/video/7700815917223376817",
+      "metrics": {
+        "followers": 12296,
+        "index": 64932,
+        "likes": 12590,
+        "views": null
+      },
+      "published_at": 1792985927.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "编剧推土机",
+      "author_id": "编剧推土机",
+      "extra": {
+        "duration": 1520,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700836666235292968",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oIeeV98g2LQTeMLWAeEQtvat64WesTHYEYAIAp~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=hVdcLoBjLqq5m91ijQTkpRFRgrQ%3D",
+      "title": "《印度婆罗门校花爱上我》重制版1-12合集，本篇作品由即梦短剧工作室制作#原创ai短剧 #即梦短剧工作室上线 #即梦AI创作者成长计划",
+      "url": "https://www.douyin.com/video/7700836666235292968",
+      "metrics": {
+        "followers": 18666,
+        "index": 31082,
+        "likes": 11390,
+        "views": null
+      },
+      "published_at": 1792990764.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "多米同学",
+      "author_id": "多米同学",
+      "extra": {
+        "duration": 340,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700854247037996303",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oQGQA5EiEFAgR3FgQ9xDNH90uh7Q3iqesALfBi~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=CzFHcbRkvohrN8nFlr0e%2Ftm6gYI%3D",
+      "title": "#洪水之中的白蟒 #因为一个片段看了整部剧 #AI漫剧 #AI短剧 #短剧推荐",
+      "url": "https://www.douyin.com/video/7700854247037996303",
+      "metrics": {
+        "followers": 3249582,
+        "index": 74856,
+        "likes": 13620,
+        "views": null
+      },
+      "published_at": 1793005800.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "多米同学",
+      "author_id": "多米同学",
+      "extra": {
+        "duration": 252,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700855287669902607",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/o0LGLCdUdB1UuO29gIfiIeUTG3vJVgARPBX7Ae~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=uqAkkaJgr%2F1aRIS4bdwOiRaAYeA%3D",
+      "title": "#洪水之中的白蟒 #因为一个片段看了整部剧 #AI漫剧 #AI短剧 #短剧推荐",
+      "url": "https://www.douyin.com/video/7700855287669902607",
+      "metrics": {
+        "followers": 3249582,
+        "index": 75362,
+        "likes": 11646,
+        "views": null
+      },
+      "published_at": 1793013300.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "星光漫剧",
+      "author_id": "星光漫剧",
+      "extra": {
+        "duration": 1781,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700864398700645632",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oo9vqAQzbGDdgaAhQ7WABQHeMCF393mEbCmHf8~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=2qKaGokkA7SYH2zdXCzjTpO9yn0%3D",
+      "title": "《红梅不做软媳妇》1-30 在外打工三年的苏红梅，回乡就嫁给软性子的贺建强，进门就撞上一个烂摊子：偏心的奶奶、撒泼作恶的大伯娘，把受气的婆婆、窝里横的公公和险些被拿去换彩礼的小姑子，死死压在底下。红梅偏不认命，凭着一股不服输的劲和一手好本事，查账本、分家产、开制衣店、揭穿集资骗局，一步步护住家人、立住门户，真正当起了这个家。最终恶人得报、亲人归心，一家人守着 \"家和万事兴\"，把日子越过越有奔头。#",
+      "url": "https://www.douyin.com/video/7700864398700645632",
+      "metrics": {
+        "followers": 10755,
+        "index": 28133,
+        "likes": 8998,
+        "views": null
+      },
+      "published_at": 1792997220.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "叁笙树AIGC",
+      "author_id": "叁笙树AIGC",
+      "extra": {
+        "duration": 15,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700869370021955827",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oQJltcM9e2f8ceJf9mJGoPDQDksXQHWrEgAAeh~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=hNcSVF2kMx7HLHF05pWNIxRHdPM%3D",
+      "title": "王孃孃也是火了，开上演唱会了，昭通要出新的明星了！ #欢迎来到我的演唱会  #爆裂舞台 #爱豆神级现场 #爆裂舞台 #ai短剧",
+      "url": "https://www.douyin.com/video/7700869370021955827",
+      "metrics": {
+        "followers": 3088,
+        "index": 45460,
+        "likes": 14834,
+        "views": null
+      },
+      "published_at": 1792998372.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "姜岁岁",
+      "author_id": "姜岁岁",
+      "extra": {
+        "duration": 19,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700870788265610496",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/o4iQf8vw7QIffEogGgfVxfAYQfGACtPJiPa9B2~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=vUk5bCqmNytLks92pZMib0JFIME%3D",
+      "title": "“故意找茬都说不出这样的话”#AI短剧 #没想到吧我也没想到  #姜岁岁",
+      "url": "https://www.douyin.com/video/7700870788265610496",
+      "metrics": {
+        "followers": 37337,
+        "index": 34127,
+        "likes": 7599,
+        "views": null
+      },
+      "published_at": 1792998708.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "LucKing",
+      "author_id": "LucKing",
+      "extra": {
+        "duration": 342,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700885362009011812",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-p-0015/oQtQ3FBNQqNBasvCeeeM8Bs7PdAWH5hAFKOVgn~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=Jh5aJDfBHIBr%2BAdRH5J%2BmoTfmVU%3D",
+      "title": "原创AIGC电影【逆生纪·巨兽时代】第十三集《虫巢之城》，爱护环境人人有责。虚拟演绎，本片含恐怖元素谨慎观看。#ai创作浪潮计划#科幻电影#未来导演扶持计划#ai短剧#即梦AI创作者成长计划",
+      "url": "https://www.douyin.com/video/7700885362009011812",
+      "metrics": {
+        "followers": 321838,
+        "index": 49426,
+        "likes": 12249,
+        "views": null
+      },
+      "published_at": 1793020740.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "不良少年陆星野",
+      "author_id": "不良少年陆星野",
+      "extra": {
+        "duration": 229,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700887106492031104",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/o48fnJUgfltoNATCtMtWADeYAB4aem2A4CfHRc~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=LaXtGXJJxmAAkxwX6EzV%2BIXs9U8%3D",
+      "title": "你到底喜欢谁… 全片由@即梦AI 短剧工作室制作；#即梦AI创作者成长计划 #即梦未来荧幕剧集片单#SoulAPP  #在Soul总有人懂你 #Soul树洞",
+      "url": "https://www.douyin.com/video/7700887106492031104",
+      "metrics": {
+        "followers": 205233,
+        "index": 58116,
+        "likes": 61591,
+        "views": null
+      },
+      "published_at": 1793002502.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "ōóò小喔喔",
+      "author_id": "ōóò小喔喔",
+      "extra": {
+        "duration": 183,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700905179303250533",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/o8fAAgyIafbhtAH4fRY8eaHPfVdYPasfBMXM2Z~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=G4B4XplyAJgfBKLLqr7Ppq1O3MY%3D",
+      "title": "AI英剧AllForYou EP01 🌵娇嗔直球小公主x克制偏宠年轻小叔 🌵明艳松弛大御姐x鲜活直球年下少爷 豪门千金携手未婚夫拆穿小叔的虚假CP......而他们，实则各怀鬼胎 #AI英剧AIIFORYOU #AI偶像星光计划 #AI创作浪潮计划 #背德 #AI短剧",
+      "url": "https://www.douyin.com/video/7700905179303250533",
+      "metrics": {
+        "followers": 3492,
+        "index": 23539,
+        "likes": 13807,
+        "views": null
+      },
+      "published_at": 1793006710.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "熬夜不睡觉",
+      "author_id": "熬夜不睡觉",
+      "extra": {
+        "duration": 96,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700911808324846564",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oUGvGIBQGfkOkCISAIenAuCRALuykVBBaMs72f~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=47Tc99F05vrS5Y01Tjtr5hMwASQ%3D",
+      "title": "别人盼孩子笑，她缺盼孩子哭#ai短剧#女频短剧#动画#抽象艺术",
+      "url": "https://www.douyin.com/video/7700911808324846564",
+      "metrics": {
+        "followers": 19397,
+        "index": 23166,
+        "likes": 4591,
+        "views": null
+      },
+      "published_at": 1793008253.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "河南欧巴·王龙",
+      "author_id": "河南欧巴·王龙",
+      "extra": {
+        "duration": 406,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7700935935546321765",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/oMg6fV7BhDm0Og7i6hgAeWQJ6OMIevNGF8MTHO~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=vqta5bPeTZxmzt369bypRT2sypc%3D",
+      "title": "《俺在韩国当欧巴》第十三集 打俺，中。动她，不中！全片由@即梦AI 短剧工作室制作 #即梦AI创作者成长计划 #即梦未来荧幕剧集片单#AI偶像星光计划  #AI偶像#河南欧巴",
+      "url": "https://www.douyin.com/video/7700935935546321765",
+      "metrics": {
+        "followers": 554893,
+        "index": 127361,
+        "likes": 159727,
+        "views": null
+      },
+      "published_at": 1793013870.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "半纸寒江",
+      "author_id": "半纸寒江",
+      "extra": {
+        "duration": 137,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700940562601364787",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oMacgG0mZGA9OQRv0nLAB7VKeBJAaC6vgVeqfI~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=V9MmnMeidVvPuHnoHB02HR%2FeJNk%3D",
+      "title": "当你救下了异世界，却救不了她 #第一人称视角 #热点 #青年创作者计划 #反转 #ai短剧",
+      "url": "https://www.douyin.com/video/7700940562601364787",
+      "metrics": {
+        "followers": 11358,
+        "index": 49101,
+        "likes": 49244,
+        "views": null
+      },
+      "published_at": 1793014956.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "Sugar Bomb AI",
+      "author_id": "Sugar Bomb AI",
+      "extra": {
+        "duration": 28,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7700958721601833466",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/osesAvMokAVeXdAnRa8C7B9Fk9hfmpBvAQBgNh~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=MrdKdNQE7tUaML1LYtgrwFrbDgI%3D",
+      "title": "大黑帮满满卖年糕 【本视频使用 Seedance 2.5 制作】 #即梦AI #一站式AI创作工作台 #即梦超级创作者 #满满 #人类幼崽 #民国萌娃 #反差萌 #四川话 #AI短剧",
+      "url": "https://www.douyin.com/video/7700958721601833466",
+      "metrics": {
+        "followers": 44137,
+        "index": 13726,
+        "likes": 1430,
+        "views": null
+      },
+      "published_at": 1793019176.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "小星一家",
+      "author_id": "小星一家",
+      "extra": {
+        "duration": 54,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701015691591784377",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-i-0813c000-ce/okwA8GF3oIDYroAAF2AwfBEUqfQs92cEeAW4gE~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=%2FZ6k7UAmdj8p7Am09AqdG5tuXz4%3D",
+      "title": "本以为爸爸要大展厨艺，没想到被妈妈当场抓包！AI 家庭小短剧 #AI短剧 #AI视频创作 #家庭喜剧 #家庭搞笑故事 #亲子日常",
+      "url": "https://www.douyin.com/video/7701015691591784377",
+      "metrics": {
+        "followers": 3369,
+        "index": 66018,
+        "likes": 29881,
+        "views": null
+      },
+      "published_at": 1793032440.0,
+      "queries": [
+        "douyin:AI短剧",
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "author": "Lian脸脸",
+      "author_id": "Lian脸脸",
+      "extra": {
+        "duration": 249,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701054915061266387",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oY47rvIeB8IltfEKBaVVphAQGeAALBLKmCcV0g~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=0lxKfUM8hLp3VwSJBgIvLzU9ZUw%3D",
+      "title": "芦苇一笑很倾城 聚会名场面终于来啦～ 改了好几版才发出来 （服装不能还原） 让宝姿们久等了 仅供娱乐 请勿上升真人！！   #AIGC #AI短剧 #白月光的杀伤力 #大女主爽剧 #微微一笑很倾城",
+      "url": "https://www.douyin.com/video/7701054915061266387",
+      "metrics": {
+        "followers": 67874,
+        "index": 67873,
+        "likes": 23156,
+        "views": null
+      },
+      "published_at": 1793071200.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "财研网AI",
+      "author_id": "财研网AI",
+      "extra": {
+        "duration": 9,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701173912494705983",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/owARszEkQiIKHmEgoaB7ITPQ7P2uHAHFAiXIi~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=lXtmdeqordlxyx%2B%2B%2B3r2GQZSQtU%3D",
+      "title": "演员胡兵称AI对演员冲击很大 就连演员都在看AI短剧，剧组有时候审美还不如AI\n#AI #科技 #AI短剧 #AI漫剧 #演员",
+      "url": "https://www.douyin.com/video/7701173912494705983",
+      "metrics": {
+        "followers": 2086897,
+        "index": 86628,
+        "likes": 22372,
+        "views": null
+      },
+      "published_at": 1793069281.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "极光新闻",
+      "author_id": "极光新闻",
+      "extra": {
+        "duration": 9,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701185750557003008",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oMfzGBBC4BAFlPQQgQqYqDAt8gug5qn3DA9gEf~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=3EtAUZNnYLLzk%2Fj0IICFP40G4Rs%3D",
+      "title": "#媒体原创 从写网文到做AI短剧，90后小伙带80多人团队，用AI“手搓”短剧 两部干到20亿播放，在牡丹江把短剧干成平台“爆剧”",
+      "url": "https://www.douyin.com/video/7701185750557003008",
+      "metrics": {
+        "followers": 3576254,
+        "index": 59549,
+        "likes": 7899,
+        "views": null
+      },
+      "published_at": 1793072041.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "吾下呆萌",
+      "author_id": "吾下呆萌",
+      "extra": {
+        "duration": 679,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701186520757046563",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/okQ7MeAAceAkheMOCA8ZWGAaMUB8NVQDBDwVbB~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=osQ6OKVjugTfNRnBZHhWwUS9Uac%3D",
+      "title": "（社恐的她只认准我）1-5集纯享版 #ai短剧 #aigc #ai漫剧 #校园恋爱 #ai创作者计划",
+      "url": "https://www.douyin.com/video/7701186520757046563",
+      "metrics": {
+        "followers": 19128,
+        "index": 21362,
+        "likes": 13388,
+        "views": null
+      },
+      "published_at": 1793072221.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "萱萱影视",
+      "author_id": "萱萱影视",
+      "extra": {
+        "duration": 125,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701192377533690341",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/ocIefo1AADrznKJgBEEgMciLiDBBiwP4iIAkqa~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=oi5pmmQLaoY7TkX%2F%2B2rmflbNgCA%3D",
+      "title": "穿越胤礽记第二集 印都交了兵怎么还来了？ 刚把太子印交出去，两千兵马就堵到了宫门。 凌普是来救我的，可在皇阿玛眼里，这跟逼宫有什么区别？ 我只想活过今晚，怎么越解释，罪名越大…… #穿越胤礽记 #穿越短剧 #古装短剧 #清宫剧 #AI短剧",
+      "url": "https://www.douyin.com/video/7701192377533690341",
+      "metrics": {
+        "followers": 24727,
+        "index": 18484,
+        "likes": 7378,
+        "views": null
+      },
+      "published_at": 1793073578.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "鸟类的好朋友AIGC",
+      "author_id": "鸟类的好朋友AIGC",
+      "extra": {
+        "duration": 609,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701193865658780991",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p3-byteindex-sign.byteimg.com/tos-cn-p-0015/oosA8fCgbgZ9DKZIBenEAUBCIA4FInP9qXJ9Qr~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=b7jzjoJutzsYT%2Fp733xyXW55uIk%3D",
+      "title": "《白垩纪元：其五》 原创末世恐龙题材故事 全片由@即梦AI 短剧工作室制作 #即梦ai创作者成长计划 #即梦未来荧幕剧集片单",
+      "url": "https://www.douyin.com/video/7701193865658780991",
+      "metrics": {
+        "followers": 177176,
+        "index": 48990,
+        "likes": 34150,
+        "views": null
+      },
+      "published_at": 1793073932.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "元气讲",
+      "author_id": "元气讲",
+      "extra": {
+        "duration": 253,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701201763579317540",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oo1AH1JIuR7Sqg0g1CLVApOGAEEIiBfeeFwBTG~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=8MZF5ss6ezH%2Fd1v2lDQv3k%2BfriU%3D",
+      "title": "《00后整治催婚父母》完，这恋爱，没人反对就没意思了 #即梦AI创作者成长计划 #未来导演扶持计划 #AI创作浪潮计划 #ai短剧",
+      "url": "https://www.douyin.com/video/7701201763579317540",
+      "metrics": {
+        "followers": 593397,
+        "index": 58536,
+        "likes": 8701,
+        "views": null
+      },
+      "published_at": 1793075769.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "金锣（基围虾养殖）",
+      "author_id": "金锣（基围虾养殖）",
+      "extra": {
+        "duration": 30,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701209530662702370",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-fd6e84/oYNDRGcqEH7CILFgqLhTOMDfPCelBlo4gEAiD9~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=FdNGy2aGUMb9%2BN8As%2FtMtQXI7hU%3D",
+      "title": "10月27日 (1) #AI短剧制作 #海钓 剧本由AI生出",
+      "url": "https://www.douyin.com/video/7701209530662702370",
+      "metrics": {
+        "followers": 14363,
+        "index": 13810,
+        "likes": 1387,
+        "views": null
+      },
+      "published_at": 1793077578.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "小乔AIGC",
+      "author_id": "小乔AIGC",
+      "extra": {
+        "duration": 160,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701249788498431273",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oskbIeigGBuVLTKBXBIVKOgYwCEgvcvApf7eqA~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=it2K%2F%2BE%2BO4%2BwBoeh3FGSrr2MrgY%3D",
+      "title": "第一集：重生范德彪，老钱果然没骗我。 彪哥开启垂钓产业园新篇章。#范德彪 #马大帅 #AI短剧 #AI漫剧",
+      "url": "https://www.douyin.com/video/7701249788498431273",
+      "metrics": {
+        "followers": 28255,
+        "index": 29834,
+        "likes": 9052,
+        "views": null
+      },
+      "published_at": 1793086952.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "西瓜小狗🍉",
+      "author_id": "西瓜小狗🍉",
+      "extra": {
+        "duration": 87,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701254327871999286",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-0015/oIXiLWyNEr1ADVcB3gcBfADexiAiBACgPli1Iw~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=ektBnbPD6v0RVV0oPd%2Br28FosNs%3D",
+      "title": "谁是臭袜豪门继承人？ 第三集！ #AI短剧 #抽象艺术 #瓜子二手车",
+      "url": "https://www.douyin.com/video/7701254327871999286",
+      "metrics": {
+        "followers": 14167,
+        "index": 33517,
+        "likes": 3172,
+        "views": null
+      },
+      "published_at": 1793088007.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "胆边生",
+      "author_id": "胆边生",
+      "extra": {
+        "duration": 382,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701255485940913073",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015c000-ce/oUGAoEfEpw4wqcxoyIBo9qAu5fE5FHAbDzvFWg~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=NkuVsRlpNHel0xGe1EHn5%2ForxVw%3D",
+      "title": "自制《裤头与二胆》 第一季大结局！ 全片由@即梦AI 短剧工作室制作 #即梦AI创作者成长计划 #即梦未来荧幕剧集片单 #裤头与二胆 #胆边生 #短剧男频 内容由Ai生成游戏画面，无不良引导  未成年人禁止吸烟禁止抽烟。下一期 番外篇大勇与网吧！无玄幻纯纯硬核！尽情期待！（再也不做特效了，我是瘸子）感谢兄弟的支持！",
+      "url": "https://www.douyin.com/video/7701255485940913073",
+      "metrics": {
+        "followers": 504253,
+        "index": 105203,
+        "likes": 45754,
+        "views": null
+      },
+      "published_at": 1793088272.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "池早的AI",
+      "author_id": "池早的AI",
+      "extra": {
+        "duration": 265,
+        "low_fans_hot": false,
+        "vertical": true
+      },
+      "id": "douyin:7701258438009015587",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p9-byteindex-sign.byteimg.com/tos-cn-p-0015/oYfJAJG72BfL8eMgByAXQwcsB8azVZQCpILrBA~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298501&x-signature=TVmPWDMoh1lbdtnTIACagiIWYW4%3D",
+      "title": "《不烧心！我的三只萌宠成精了》E01：真不烧心，我的老天奶！我养的三只萌宠，一夜之间竟然变成了三个顶级大帅哥！#萌宠成精了 #萌宠 #ai短剧 #高甜来袭",
+      "url": "https://www.douyin.com/video/7701258438009015587",
+      "metrics": {
+        "followers": 55875,
+        "index": 130357,
+        "likes": 34886,
+        "views": null
+      },
+      "published_at": 1793088966.0,
+      "queries": [
+        "douyin:AI短剧"
+      ],
+      "query": "douyin:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t2"
+      ]
+    },
+    {
+      "author": "大千故事汇",
+      "author_id": "大千故事汇",
+      "extra": {
+        "duration": 182,
+        "low_fans_hot": true,
+        "vertical": true
+      },
+      "id": "douyin:7701266641280716075",
+      "kind": "video",
+      "source": "douyin",
+      "text": "",
+      "thumb": "https://p6-byteindex-sign.byteimg.com/tos-cn-p-fd6e84/oICbL8GZwfMeiBiIgoMfEUVICKRLIRV1BQAnHR~tplv-obj.image?rk3s=c8d089e8&x-expires=1793298506&x-signature=J9nyt535F4M2MtONrEsSEJ9%2FcdU%3D",
+      "title": "最美修理工，人间自有真情在！ #即梦AI #即梦电脑版还是太全面了 #一站式AI创作工作台 #AI短剧",
+      "url": "https://www.douyin.com/video/7701266641280716075",
+      "metrics": {
+        "followers": 40697,
+        "index": 19468,
+        "likes": 4693,
+        "views": null
+      },
+      "published_at": 1793090875.0,
+      "queries": [
+        "douyin:AI短剧:低粉爆款"
+      ],
+      "query": "douyin:AI短剧:低粉爆款",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t3"
+      ]
+    },
+    {
+      "author": "夏季芭乐啥呢",
+      "author_id": "6a102dfc0000000002002000",
+      "extra": {
+        "duration": 31,
+        "vertical": true
+      },
+      "id": "xhs:6ada1221000000002a0380c8",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#没有技巧就是硬帅  #爱上帅哥就像呼吸一样简单  #ai短剧",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326kkojogl8005qgg5nu0g800mj88ik8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=c37bd0a583bcd95ce89c0fdd6fa507bd&t=6ae33bee",
+      "title": "一张帅脸后面是一张更帅的脸！",
+      "url": "https://www.xiaohongshu.com/explore/6ada1221000000002a0380c8?xsec_token=YBQv9DeWg3g3CuougmqOIwYVT7tWIAmqfsm6UrYgyrUcg=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 61,
+        "favorites": 3273,
+        "followers": null,
+        "likes": 11860,
+        "views": null
+      },
+      "published_at": 1792676385.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "酷兔AIGC",
+      "author_id": "60c5884a000000000100aeef",
+      "extra": {
+        "duration": 307,
+        "vertical": true
+      },
+      "id": "xhs:6adacba3000000002c027f6c",
+      "kind": "video",
+      "source": "xhs",
+      "text": "[害羞R]把天天看的末日囤货故事，做成AI短剧超详细保姆级教程来啦！ [哇R]这次用Miora织影Agent，把故事大纲",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g0k0326kfms9h4c005o65h1509bnfelnssb8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=b719c7c7386b3b699965f7ff0857ccb6&t=6ae33bee",
+      "title": "末日囤货AI短剧👻超详细保姆级教程",
+      "url": "https://www.xiaohongshu.com/explore/6adacba3000000002c027f6c?xsec_token=YBQv9DeWg3g3CuougmqOIwYX0vybA1Th7cmeS7U-ajr0M=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 74,
+        "favorites": 3329,
+        "followers": null,
+        "likes": 5251,
+        "views": null
+      },
+      "published_at": 1792751401.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "徐晚日记",
+      "author_id": "683417ba000000001e0027cf",
+      "extra": {
+        "duration": 415,
+        "vertical": true
+      },
+      "id": "xhs:6adb1e01000000002b01f061",
+      "kind": "video",
+      "source": "xhs",
+      "text": "动物成精9#ai短剧  #ai漫剧  #成精宠  #动物成精",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g2sg326lhjulc5q405ptkch81o634df220fg?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=93897694ea1ed7f3a61dda1ca593ee71&t=6ae33bee",
+      "title": "动物成精勇闯人类打工界！",
+      "url": "https://www.xiaohongshu.com/explore/6adb1e01000000002b01f061?xsec_token=YB5XcRczP1WfJPZZ-qSpv0dKmiM_s34P5GHbGIziH0Tc4=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 752,
+        "favorites": 1911,
+        "followers": null,
+        "likes": 16991,
+        "views": null
+      },
+      "published_at": 1792744961.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "鱼乐乐",
+      "author_id": "67ea4158000000000d009882",
+      "extra": {
+        "duration": 149,
+        "vertical": true
+      },
+      "id": "xhs:6adbac16000000002c022ad4",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#女频  #现言  #甜宠  #AI短剧  #帅哥  #剧情  #修罗场  #反转",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326m6slho4q005pva85c396423ibsbeo?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=fa6b41287cdf0a167306080f12d2e4e2&t=6ae33bee",
+      "title": "我哥从小把我捧在手心，哥哥天都塌了",
+      "url": "https://www.xiaohongshu.com/explore/6adbac16000000002c022ad4?xsec_token=YB5XcRczP1WfJPZZ-qSpv0dA_8ScjIFvS33zoAsSlA_pM=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 348,
+        "favorites": 2020,
+        "followers": null,
+        "likes": 7271,
+        "views": null
+      },
+      "published_at": 1792798081.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "劇官大人",
+      "author_id": "64a39cde0000000011000992",
+      "extra": {
+        "duration": 50,
+        "vertical": false
+      },
+      "id": "xhs:6adc17f9000000002b00db9c",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#ai短剧  #予你  #段宴  #好剧推荐  #短剧  #容寄侨  #段宴容寄侨  #甜蜜  #甜剧",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g2sg326mk2uhik6cg5p53jjf482cikaekfd0?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=a733a2a3bbbe152de864b7ba3aec8af9&t=6ae33bee",
+      "title": "爱上老婆之后就这样框框打脸",
+      "url": "https://www.xiaohongshu.com/explore/6adc17f9000000002b00db9c?xsec_token=YBk4iMY3DRha8stiRQt1EiGi5vOrgDc1RkSkFl0wJ1AVI=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 17,
+        "favorites": 1015,
+        "followers": null,
+        "likes": 3504,
+        "views": null
+      },
+      "published_at": 1792808953.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "还有言载",
+      "author_id": "67f79e60000000000d00904b",
+      "extra": {
+        "duration": 424,
+        "vertical": true
+      },
+      "id": "xhs:6adc75070000000032022502",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#不正经魔女日记  #ai短剧",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g0k0326mvf14344005pvnjpg3942bnpt9oa8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=32643420788babe76c7ff132a02ed423&t=6ae33bee",
+      "title": "不正经魔女日记 之我的怪物俏房客 12",
+      "url": "https://www.xiaohongshu.com/explore/6adc75070000000032022502?xsec_token=YBk4iMY3DRha8stiRQt1EiGldVKFgwpuX8UIvyfr61jow=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 788,
+        "favorites": 6932,
+        "followers": null,
+        "likes": 58318,
+        "views": null
+      },
+      "published_at": 1792832775.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "7号飞船",
+      "author_id": "6a9d66e60000000013003001",
+      "extra": {
+        "duration": 96,
+        "vertical": true
+      },
+      "id": "xhs:6adca8b4000000003300e721",
+      "kind": "video",
+      "source": "xhs",
+      "text": "一场雨，一块来路不明的玉。 再睁眼，陆珩已经成了所有人口中的“九皇子”。 只有晏凌知道—— 他不是姬无瑕。 而陆珩很快也",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g2sg326n5niick4e05qktcrj4oc0187nbeno?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=af9257cc90fb6d8b579eeb234e9cbdec&t=6ae33bee",
+      "title": "他知道我最大的秘密，而我要救他的命…",
+      "url": "https://www.xiaohongshu.com/explore/6adca8b4000000003300e721?xsec_token=YBk4iMY3DRha8stiRQt1EiGp-X5sX25bdXflT84Bi4bR0=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 353,
+        "favorites": 1107,
+        "followers": null,
+        "likes": 2835,
+        "views": null
+      },
+      "published_at": 1792846004.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "豹猫与狼兔",
+      "author_id": "6ab500660000000013031002",
+      "extra": {
+        "duration": 677,
+        "vertical": false
+      },
+      "id": "xhs:6adccee1000000002b01c2d5",
+      "kind": "video",
+      "source": "xhs",
+      "text": "🐆：下次我也要叫雾雾。 🐱：我们到底是人是兽？ 🐺：唉，我这被反复迷恋的一生 🐰：逗狗真好玩！ 😿：人生真是落",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326nad8di4c005qll01j4u402b5mk080?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=55b9d9775ca4d7d21d31b5a8ba387de9&t=6ae33bee",
+      "title": "🐆：下次我也要叫雾雾。 🐱：我们到底是人是兽？ 🐺：唉，我这被反复迷恋的一生 🐰：逗狗真好玩！ 😿：人生真是落",
+      "url": "https://www.xiaohongshu.com/explore/6adccee1000000002b01c2d5?xsec_token=YBk4iMY3DRha8stiRQt1EiGjSPkh16Frw5yBYIXHY-mVk=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 931,
+        "favorites": 1712,
+        "followers": null,
+        "likes": 15176,
+        "views": null
+      },
+      "published_at": 1792855777.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "顾年和许安安",
+      "author_id": "64578fc400000000290142ff",
+      "extra": {
+        "duration": 19,
+        "vertical": false
+      },
+      "id": "xhs:6add7aed000000002403de56",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#AI情感短剧  #反转",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g0k0326nvfl8pkc005p2nhv2aagnvgb1dpv0?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=afcdc03f6d5ec81e0e8e07e961c202e9&t=6ae33bee",
+      "title": "有些瓜，吃着吃着就吃到自己头上了",
+      "url": "https://www.xiaohongshu.com/explore/6add7aed000000002403de56?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7CbWupS715uqy-hWj43njqQ=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 114,
+        "favorites": 1422,
+        "followers": null,
+        "likes": 19030,
+        "views": null
+      },
+      "published_at": 1792899821.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "潇湘红楼",
+      "author_id": "6a0d69b40000000001007800",
+      "extra": {
+        "duration": 144,
+        "vertical": true
+      },
+      "id": "xhs:6adda8af000000002403edd9",
+      "kind": "video",
+      "source": "xhs",
+      "text": "第六集 贾府欠我娘的命，真当我黛玉不敢讨？ 重生幼年黛玉联手父亲林如海，借大士真人揭破母亲贾敏被下毒真相、锁定真凶贾府王",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g2sg326nt8qlu50905qgdd6q08u006c5t960?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=fd21a507cad6ffdaa5b4df23103537d2&t=6ae33bee",
+      "title": "第六集 贾府欠我娘的命，真当我黛玉不敢讨？ 重生幼年黛玉联手父亲林如海，借大士真人揭破母亲贾敏被下毒真相、锁定真凶贾府王",
+      "url": "https://www.xiaohongshu.com/explore/6adda8af000000002403edd9?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7DPaj8vNuZTLMsG0NCp8lHE=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 470,
+        "favorites": 499,
+        "followers": null,
+        "likes": 3374,
+        "views": null
+      },
+      "published_at": 1792911535.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "柠檬也好酸",
+      "author_id": "61d86689000000001000aac2",
+      "extra": {
+        "duration": 594,
+        "vertical": true
+      },
+      "id": "xhs:6addb3d100000000330198f6",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#二次元 #原创动画 #AI漫剧 #校园恋爱 #漫剧",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326o2s6m7l6305oeocq4k1am2vqj4lu8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=1da69c1511516b2058a2d844f7776b0b&t=6ae33bee",
+      "title": "她一来全校恋爱脑都清醒了",
+      "url": "https://www.xiaohongshu.com/explore/6addb3d100000000330198f6?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7AQcgx0sXVgHfLF5QPFvQsY=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 104,
+        "favorites": 3323,
+        "followers": null,
+        "likes": 6052,
+        "views": null
+      },
+      "published_at": 1792921205.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "魔女小卡",
+      "author_id": "68e73545000000003702c750",
+      "extra": {
+        "duration": 372,
+        "vertical": true
+      },
+      "id": "xhs:6addee4a000000003201672f",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#异世界加载中  #不正经魔女日记  #Ai短剧  #天才导演招募计划  #我的第一部短电影",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326odg65q58005q776l2tthqgh746hkg?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=0f67fb7840fa9959cf6343fead5d2922&t=6ae33bee",
+      "title": "异世界加载中•掉进游戏后我开始无限人生09",
+      "url": "https://www.xiaohongshu.com/explore/6addee4a000000003201672f?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7AMZTRYj2jDHQnlb4Ikkkds=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 164,
+        "favorites": 394,
+        "followers": null,
+        "likes": 3573,
+        "views": null
+      },
+      "published_at": 1792929354.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "蕭清（登允）",
+      "author_id": "5deec9e4000000000100904e",
+      "extra": {
+        "duration": 711,
+        "vertical": true
+      },
+      "id": "xhs:6addf375000000002c0203cb",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#短剧 #一口气看全集",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326oe5qm4lqdg5nfep7i0942e5bmdbhg?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=b5573dceb9426e95937d7fa2d5e5eef6&t=6ae33bee",
+      "title": "#短剧 #一口气看全集",
+      "url": "https://www.xiaohongshu.com/explore/6addf375000000002c0203cb?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7PPz8US0A6o4wAkveHBIwFk=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 162,
+        "favorites": 507,
+        "followers": null,
+        "likes": 2652,
+        "views": null
+      },
+      "published_at": 1792930677.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "sandra酸酸",
+      "author_id": "5555b26767bc656dfc4f424b",
+      "extra": {
+        "duration": 46,
+        "vertical": true
+      },
+      "id": "xhs:6addff9e000000003101ef38",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#恐怖列车  #ai时代坚持手搓的艺薯家  #ai短片  #aigc短剧  #虚构演绎仅供娱乐  #恐怖  #中式恐怖",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g2sg326oflih04ql040kd26p6egibsta92e8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=f6caf46dc2a693baa4a2db82abb8eeb2&t=6ae33bee",
+      "title": "恋爱脑霸总坐恐怖列车，鬼都被恶心哭了！",
+      "url": "https://www.xiaohongshu.com/explore/6addff9e000000003101ef38?xsec_token=YBo-2ysqzCXJIoIBxvxfBj7BPe8ZD63RXijtWCjdrhjPI=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 266,
+        "favorites": 5359,
+        "followers": null,
+        "likes": 24704,
+        "views": null
+      },
+      "published_at": 1792933790.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "AIGC KK",
+      "author_id": "5c1658b1000000000602f43e",
+      "extra": {
+        "duration": 205,
+        "vertical": false
+      },
+      "id": "xhs:6ade9199000000001503935a",
+      "kind": "video",
+      "source": "xhs",
+      "text": "原创AI刑侦短剧《蚀爱•美人鱼之死》 #小陀螺AI短剧工作室爆款制造机",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g0k0326p1ev3h58005n0mb2ohlt1up1bmns8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=e036531788c9fd7cfcd82c68d9560866&t=6ae33bee",
+      "title": "原创AI刑侦短剧《蚀爱•美人鱼之死》 #小陀螺AI短剧工作室爆款制造机",
+      "url": "https://www.xiaohongshu.com/explore/6ade9199000000001503935a?xsec_token=YBiUz5ek4acjxH2lqxNUUYqRm887P7zp9178XRs1r9zsg=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 419,
+        "favorites": 5055,
+        "followers": null,
+        "likes": 13421,
+        "views": null
+      },
+      "published_at": 1792971161.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "四川欧尼崔幺妹",
+      "author_id": "6a2a3886000000000f03ac01",
+      "extra": {
+        "duration": 158,
+        "vertical": false
+      },
+      "id": "xhs:6aded2fc00000000180287c5",
+      "kind": "video",
+      "source": "xhs",
+      "text": "《幺妹验男记》第七集 中央空调，就地拆机｜ 「全片由@即梦AI 短剧工作室制作 #即梦AI创作者成长计划  #即梦未来荧",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326p6jdcm5q0g5qha7233vb01s3rnago?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=1ca922553bf8dcd927774c44a9508694&t=6ae33bee",
+      "title": "《幺妹验男记》第七集 中央空调，就地拆机｜ 「全片由@即梦AI 短剧工作室制作 #即梦AI创作者成长计划  #即梦未来荧",
+      "url": "https://www.xiaohongshu.com/explore/6aded2fc00000000180287c5?xsec_token=YBiUz5ek4acjxH2lqxNUUYqcrrvvQlpq_BzxMSNR2YuZo=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 285,
+        "favorites": 1412,
+        "followers": null,
+        "likes": 6568,
+        "views": null
+      },
+      "published_at": 1792987900.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "何以生",
+      "author_id": "69e197db000000003202e305",
+      "extra": {
+        "duration": 301,
+        "vertical": true
+      },
+      "id": "xhs:6adf323f0000000018025961",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#即梦短剧工作室上线  #即梦AI创作者成长计划  #即梦未来荧幕剧集片单  #小陀螺AI短剧工作室爆款制造机",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g34o326pl2ab458705qf1ivdsloo5274ha6o?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=474681f67206f626eb621306bc616ee2&t=6ae33bee",
+      "title": "刚回国就亲错人，不仅认错哥哥还有双胞胎？",
+      "url": "https://www.xiaohongshu.com/explore/6adf323f0000000018025961?xsec_token=YBdWlwA0mtV6PrE1D5wi6lnNJX6ZOXk7vIZHW208JbD-w=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 79,
+        "favorites": 1511,
+        "followers": null,
+        "likes": 3359,
+        "views": null
+      },
+      "published_at": 1793012287.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "心动失焦",
+      "author_id": "67b43c1b000000000a03cfa8",
+      "extra": {
+        "duration": 76,
+        "vertical": true
+      },
+      "id": "xhs:6ae0728e000000001f0174e7",
+      "kind": "video",
+      "source": "xhs",
+      "text": "他无名分，他嗔嗔嗔。我选驸马，他争争争。#AI浪潮计划  #AI偶像  #高甜短剧",
+      "thumb": "https://sns-na-i11.xhscdn.com/spectrum/1040g34o326qs779146005ptk7gdinjt8kkr2huo?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=e3747c31f515155fff03bc48b7f66db4&t=6ae33bee",
+      "title": "他无名分，他嗔嗔嗔。我选驸马，他争争争。#AI浪潮计划 #AI偶像 #高甜短剧",
+      "url": "https://www.xiaohongshu.com/explore/6ae0728e000000001f0174e7?xsec_token=YBI8w82qHBYDCC6jJKdCLZahKOS38tECdpn6WiRHjFnZk=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 96,
+        "favorites": 881,
+        "followers": null,
+        "likes": 3070,
+        "views": null
+      },
+      "published_at": 1793097906.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "爱吃布丁的胖丁",
+      "author_id": "59de370820e88f58d1fc61d8",
+      "extra": {
+        "duration": 9,
+        "vertical": false
+      },
+      "id": "xhs:6ae1af36000000002a0394e1",
+      "kind": "video",
+      "source": "xhs",
+      "text": "#ai短剧  #这简单而纯粹的爱情  #你在闹他在笑",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326s2r9fh560049ssmsrggoeo792m7v8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=0b317fa1827f43b69f94a24c8a22b58c&t=6ae33bee",
+      "title": "难得夫妻是少年",
+      "url": "https://www.xiaohongshu.com/explore/6ae1af36000000002a0394e1?xsec_token=YBd4Pzo5YkW8DnB8UmhGKepbWprGRK0o4ZV876mRb2euI=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 224,
+        "favorites": 3759,
+        "followers": null,
+        "likes": 15383,
+        "views": null
+      },
+      "published_at": 1793175350.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    },
+    {
+      "author": "徐晚日记",
+      "author_id": "683417ba000000001e0027cf",
+      "extra": {
+        "duration": 308,
+        "vertical": true
+      },
+      "id": "xhs:6ae32cab00000000090036f7",
+      "kind": "video",
+      "source": "xhs",
+      "text": "久等了！端上一位男mother给大家品鉴。#ai漫剧  #ai短剧  #动物成精  #成精宠  #猫头鹰",
+      "thumb": "https://sns-na-i11.xhscdn.com/1040g008326thc9g8ka6g5q1k2ut7g9uf8qu20j8?imageView2/2/w/576/format/webp/q/87%7CimageMogr2/strip&redImage/frame/0&ap=5&sc=SRH_PRV&sign=2def156b8534dbe22c193ada5ab09f2e&t=6ae33bee",
+      "title": "被主管刁难，但…我家宠物可是成精了！！！",
+      "url": "https://www.xiaohongshu.com/explore/6ae32cab00000000090036f7?xsec_token=YBDSYqPUG9pwL_Yuj9Ylng3QRAn5VLS4xJ5t3KQNtrDBs=&xsec_source=pc_search",
+      "metrics": {
+        "comments": 356,
+        "favorites": 683,
+        "followers": null,
+        "likes": 4784,
+        "views": null
+      },
+      "published_at": 1793273003.0,
+      "queries": [
+        "xhs:AI短剧"
+      ],
+      "query": "xhs:AI短剧",
+      "r04_status": "pending",
+      "r04_reason": "",
+      "r04_evidence": {},
+      "cache_hit": false,
+      "task_ids": [
+        "t4"
+      ]
+    }
+  ]
+}

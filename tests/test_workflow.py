@@ -52,9 +52,9 @@ def model(prompt, system, max_tokens):
     if system==w.R04:
         out={'items':[dict(item_id=i['item_id'],status='uncertain' if 'unknown' in i['text'] else 'irrelevant' if 'irrelevant' in i['text'] else 'relevant',reason='依据提供的内容') for i in p['items']]}
     elif system==w.R05 and 'items' in p:
-        out={'groups':[dict(title=i['title'] or i['item_id'],category='工程实践',summary='开源实现',item_ids=[i['item_id']]) for i in p['items']]}
+        out={'topics':[dict(title=i['title'] or i['item_id'],type='产品与项目',summary='开源实现',item_ids=[i['item_id']]) for i in p['items']], 'ungrouped_item_ids':[]}
     elif system==w.R05:
-        out={'groups':[dict(title=i['title'],category=i['category'],summary=i['summary'],member_groups=[i['group_id']]) for i in p['groups']]}
+        out={'topics':[dict(title=i['title'],type=i['type'],summary=i['summary'],ref_ids=[i['ref_id']]) for i in p['units'] if not i['ungrouped']], 'ungrouped_ref_ids':[i['ref_id'] for i in p['units'] if i['ungrouped']]}
     else: raise AssertionError('unexpected model call')
     return json.dumps(out),dict(prompt_tokens=100,completion_tokens=100)
 
@@ -257,7 +257,7 @@ class WorkflowTest(unittest.TestCase):
     def test_cross_batch_merge_and_singletons(self):
         self.activate();_,r=self.run_with([item(n) for n in range(45)])
         self.assertTrue(r['state']['r05_complete']);self.assertEqual(len(r['state']['groups']),45)
-        self.assertEqual(r['costs']['r05']['calls'],3)
+        self.assertEqual(r['costs']['r05']['calls'],5)
 
     def test_collector_failure_not_empty_other_tasks_continue(self):
         self.activate(plan(sources=['github','bili']))

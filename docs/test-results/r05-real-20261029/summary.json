@@ -1,0 +1,55 @@
+{
+  "candidate_count": 112,
+  "platforms": {
+    "bili": 20,
+    "douyin": 72,
+    "xhs": 20
+  },
+  "r04": {
+    "relevant": 74,
+    "uncertain": 35,
+    "irrelevant": 3
+  },
+  "r05_input_count": 109,
+  "r05_batches": 3,
+  "topics": 41,
+  "grouped_unique": 99,
+  "ungrouped": 10,
+  "ungrouped_percent": 9.17,
+  "ungrouped_percent_all_candidates": 8.93,
+  "multi_topic_items": 18,
+  "cross_account_topics": 17,
+  "cross_platform_topics": 8,
+  "complete": true,
+  "status": "ok",
+  "calls": 13,
+  "reported_model_cost_cny": 0.555888,
+  "unknown_cost_calls": 0,
+  "errors": [],
+  "warnings": [
+    "R05 输出校验/请求失败：R05 未完整覆盖输入或未聚合列表与主题重叠"
+  ],
+  "costs": {
+    "agent": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_cny": 0,
+      "uncertain_reserved_cny": 0
+    },
+    "r04": {
+      "calls": 6,
+      "input_tokens": 12338,
+      "output_tokens": 5615,
+      "estimated_cny": 0.13919,
+      "uncertain_reserved_cny": 0
+    },
+    "r05": {
+      "calls": 7,
+      "input_tokens": 45794,
+      "output_tokens": 14595,
+      "estimated_cny": 0.4167,
+      "uncertain_reserved_cny": 0
+    }
+  }
+}

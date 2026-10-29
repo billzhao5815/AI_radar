@@ -22,34 +22,20 @@ def singleton(item, category='待进一步整理'):
                 merge_anchor='', evidence={})
 
 
+TOPIC_TYPES = ('题材与内容形式', '玩法与方法', '事件与热点', '产品与项目', '商业模式与机会', '其他具体现象')
+
+
 def guard_groups(groups, items):
-    """Invalid semantic merges are split, never dropped. Schema/coverage validated separately."""
-    by_id = {i['id']: i for i in items}
-    out, warnings = [], []
-    for group in groups:
-        ids = group['item_ids']
-        if len(ids) == 1:
-            out.append(group); continue
-        anchor = group.get('merge_anchor', '')
-        evidence = group.get('evidence', {})
-        # Broad shared labels cannot identify a concrete object or event.
-        broad = bool(re.fullmatch(r'(?:ai|人工智能|大模型)?(?:副业|赚钱|搞钱|变现|商业化|工具|方法|案例|项目|应用|内容|开发|工程|实践|模板|教程|技术|产品|服务|视频|创业|收入|与|和|及|\s)+', anchor, re.I))
-        generic_words = {'ai', 'agent', 'agents', 'tools', 'tool', 'side', 'hustle', 'income', 'money', 'monetization', 'payment', 'payments', 'sdk', 'app', 'apps', 'development', 'template', 'templates', 'business', 'methods', 'method'}
-        words = re.findall(r'[a-z]+', anchor.lower()) if isinstance(anchor, str) else []
-        broad = broad or bool(words and set(words) <= generic_words)
-        repos = {iid for iid in ids if by_id[iid].get('source') == 'github' or iid.startswith('github:')}
-        valid = isinstance(evidence, dict) and len(norm(anchor)) >= 4 and not broad and len(repos) <= 1
-        # Distinct repositories are distinct projects unless an explicit shared object is in their descriptions.
-        for iid in ids:
-            item = by_id[iid]
-            quote = evidence.get(iid, '') if isinstance(evidence, dict) else ''
-            valid = valid and grounded(quote, item) and norm(anchor) in norm(quote)
-        if valid:
-            out.append(group)
-        else:
-            warnings.append('缺少共同具体对象的原文证据，已拆为独立条目：' + group['title'])
-            out.extend(singleton(by_id[iid], group['category']) for iid in ids)
-    return out, warnings
+    """Protect provenance and structure; semantic agreement belongs to R05."""
+    allowed = {i['id'] for i in items}
+    for g in groups:
+        ids = g.get('item_ids')
+        if (not isinstance(ids, list) or not ids or any(not isinstance(i, str) for i in ids)
+                or len(ids) != len(set(ids)) or not set(ids) <= allowed
+                or g.get('type') not in TOPIC_TYPES
+                or any(not isinstance(g.get(k), str) or not g[k].strip() for k in ('title', 'summary'))):
+            raise ValueError('R05 主题结构或来源引用不合法')
+    return groups, []
 
 
 # Formatting normalization only: never remove words, negation or numeric signs.

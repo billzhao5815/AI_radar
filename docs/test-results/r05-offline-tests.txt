@@ -1,0 +1,115 @@
+test_semantic_merges_no_longer_require_shared_object_quotes (test_analysis_regressions.AnalysisRegressions) ... ok
+test_r04_legacy_quotes_do_not_gate_passage (test_analysis_regressions.AnalysisRegressions) ... ok
+test_real_candidate_pool_does_not_crowd_out_repositories (test_analysis_regressions.AnalysisRegressions) ... ok
+test_time_constraints_are_sent_even_without_placeholders (test_analysis_regressions.AnalysisRegressions) ... ok
+test_uniform_merge_contract_and_one_schema_repair (test_analysis_regressions.AnalysisRegressions) ... ok
+test_failed_merge_shows_saved_groups_and_resume_uses_batch_cache (test_analysis_regressions.AnalysisRegressions) ... ok
+test_old_run_r04_status_is_not_reused_under_new_rules (test_analysis_regressions.AnalysisRegressions) ... ok
+test_douyin_description_and_optional_metadata (test_r03_r04.RetentionTests) ... ok
+test_duplicate_merge_updates_content_and_preserves_snapshots (test_r03_r04.RetentionTests) ... ok
+test_all_candidates_budget_stop_resume_and_metadata_payload (test_r03_r04.RetentionTests) ... ok
+test_legacy_candidate_limit_does_not_truncate_single_pass (test_r03_r04.RetentionTests) ... ok
+test_configured_keyword_order_modes_and_fixed_queues (test_r03_r04.RetentionTests) ... ok
+test_cache_covers_actual_input (test_r03_r04.RetentionTests) ... ok
+test_candidate_mix_fairness_missing_metrics_and_dedup (test_r03_r04.RetentionTests) ... ok
+test_actual_fde_quoted_ellipsis_recovers_without_rewriting_source (test_r04_evidence.EvidenceTests) ... ok
+test_basic_contract_rejects_invalid_output (test_r04_evidence.EvidenceTests) ... ok
+test_hashtags_metadata_and_wrong_field_do_not_count (test_r04_evidence.EvidenceTests) ... ok
+test_legacy_classifications_do_not_override_status (test_r04_evidence.EvidenceTests) ... ok
+test_legacy_ellipsis_and_typographic_variants (test_r04_evidence.EvidenceTests) ... ok
+test_missing_or_unmatched_quotes_do_not_gate_passage (test_r04_evidence.EvidenceTests) ... ok
+test_not_fuzzy_and_not_numeric_or_negative_rewrite (test_r04_evidence.EvidenceTests) ... ok
+test_only_minimal_output_is_required (test_r04_evidence.EvidenceTests) ... ok
+test_author_identity_uses_platform_and_id (test_r05_topics.TopicContract) ... ok
+test_invalid_contracts (test_r05_topics.TopicContract) ... ok
+test_multiple_topics_and_unrelated_tools (test_r05_topics.TopicContract) ... ok
+test_platform_metrics_unknown_dedup_and_stable_sort (test_r05_topics.TopicContract) ... ok
+test_three_monitoring_directions_and_release (test_r05_topics.TopicContract) ... ok
+test_three_goals_end_to_end_with_scripted_model (test_r05_topics.TopicWorkflow) ... ok
+test_interrupted_later_merge_reuses_successful_pages (test_r05_topics.TopicWorkflow) ... ok
+test_r05_revision_does_not_repeat_r04 (test_r05_topics.TopicWorkflow) ... ok
+test_cross_batch_ungrouped_form_topic_with_overlap_and_bounded_payload (test_r05_topics.TopicWorkflow) ... ok
+test_invalid_ids_repair_then_ungrouped (test_r05_topics.TopicWorkflow) ... ok
+test_budget_failure_keeps_leaf_batches_and_resume (test_r05_topics.TopicWorkflow) ... ok
+test_cost_since_snapshot (test_rules.DailyDeep) ... ok
+test_deep_failure_keeps_the_brief (test_rules.DailyDeep) ... deep dive failed: RuntimeError TikHub down
+ok
+test_deep_runs_for_rising_only (test_rules.DailyDeep) ... {}
+{}
+deep dive: 2 topics, 0.03 USD
+ok
+test_no_rising_topics (test_rules.DailyDeep) ... ok
+test_bars_render (test_rules.Deep) ... ok
+test_bili_tag_match_and_ai_filter (test_rules.Deep) ... ok
+test_burst_is_rising (test_rules.Labels) ... ok
+test_capped_before_is_not_burst (test_rules.Labels) ... ok
+test_evergreen (test_rules.Labels) ... ok
+test_memory_and_cooling (test_rules.Labels) ... ok
+test_new_needs_two_signals (test_rules.Labels) ... ok
+test_new_term_alone_is_watch (test_rules.Labels) ... ok
+test_partly_old_youtube_format_is_rising (test_rules.Labels) ... ok
+test_title_match_evergreen (test_rules.Labels) ... ok
+test_title_match_new (test_rules.Labels) ... ok
+test_youtube_new_share (test_rules.Labels) ... ok
+test_youtube_title_match (test_rules.Labels) ... ok
+test_embeds (test_rules.Media) ... ok
+test_headline_why_fallback (test_rules.Media) ... ok
+test_x_media_rendition (test_rules.Media) ... ok
+test_blocked (test_rules.Parsing) ... ok
+test_counts (test_rules.Parsing) ... ok
+test_lane (test_rules.Parsing) ... ok
+test_relative_time (test_rules.Parsing) ... ok
+test_twitter_time (test_rules.Parsing) ... ok
+test_generic_topic_names (test_rules.Relevance) ... ok
+test_hf_allowlist (test_rules.Relevance) ... ok
+test_model_family (test_rules.Relevance) ... ok
+test_off_lane (test_rules.Relevance) ... ok
+test_strong_ai (test_rules.Relevance) ... ok
+test_new_account_floor (test_rules.Scoring) ... ok
+test_video_signals (test_rules.Scoring) ... ok
+test_env_file (test_rules.Settings) ... ok
+test_headline_voice (test_rules.Settings) ... ok
+test_reader_json_has_no_run_info (test_rules.Settings) ... ok
+test_creator_joins_x_is_burst (test_rules.XLabels) ... ok
+test_known_thread_never_bursts (test_rules.XLabels) ... ok
+test_single_source_money_claim (test_rules.XLabels) ... ok
+test_slow_spread_is_hot (test_rules.XLabels) ... ok
+test_small (test_rules.XLabels) ... ok
+test_num_drops_point_zero (test_share.Numbers) ... ok
+test_one_video_is_the_total (test_share.Numbers) ... ok
+test_video_stats (test_share.Numbers) ... ok
+test_x_stats_use_breadth (test_share.Numbers) ... ok
+test_round_trip (test_share.QR) ... ok
+test_covers (test_share.Specs) ... ok
+test_no_run_info (test_share.Specs) ... ok
+test_one_spec_per_item (test_share.Specs) ... ok
+test_page_hooks (test_share.Specs) ... ok
+test_youtube_prefers_maxres (test_share.Specs) ... ok
+test_budget_reservation_before_request_unknown_usage_and_resume (test_workflow.WorkflowTest) ... ok
+test_collection_budget_trims_keywords_not_capabilities (test_workflow.WorkflowTest) ... ok
+test_collector_failure_not_empty_other_tasks_continue (test_workflow.WorkflowTest) ... ok
+test_configuration_preview_confirmation_is_atomic (test_workflow.WorkflowTest) ... ok
+test_content_versions_and_target_isolation (test_workflow.WorkflowTest) ... ok
+test_cross_batch_merge_and_singletons (test_workflow.WorkflowTest) ... ok
+test_e2e_classification_and_cache (test_workflow.WorkflowTest) ... ok
+test_empty_content_passes_to_r05 (test_workflow.WorkflowTest) ... ok
+test_failed_agent_does_not_replace_active (test_workflow.WorkflowTest) ... ok
+test_failed_batch_stays_pending_and_bad_groups_rejected (test_workflow.WorkflowTest) ... ok
+test_fixed_plan_covers_menu_and_douyin_labels (test_workflow.WorkflowTest) ... ok
+test_frozen_tasks_and_dedup_task_mapping (test_workflow.WorkflowTest) ... ok
+test_goal_gate_and_channel_keywords (test_workflow.WorkflowTest) ... ok
+test_interpretation_is_generated_after_channel_selection (test_workflow.WorkflowTest) ... ok
+test_prompt_injection_is_data_and_new_words_are_candidates (test_workflow.WorkflowTest) ... ok
+test_r05_unfinished_is_explicit_and_completed_r04_not_repeated (test_workflow.WorkflowTest) ... ok
+test_recovery_reconciles_dead_worker (test_workflow.WorkflowTest) ... ok
+test_refined_keywords_keep_model_order_without_forcing_original_input (test_workflow.WorkflowTest) ... ok
+test_resume_accepts_new_and_legacy_candidate_state (test_workflow.WorkflowTest) ... ok
+test_subprocess_agent_preview_confirm_and_no_collection (test_workflow.WorkflowTest) ... ok
+test_uncertain_r05_pending_is_reported (test_workflow.WorkflowTest) ... ok
+test_web_routes_and_csrf (test_workflow.WorkflowTest) ... ok
+
+----------------------------------------------------------------------
+Ran 105 tests in 4.272s
+
+OK
+{}
