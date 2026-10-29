@@ -80,12 +80,47 @@ def _j(v) -> str:
     return json.dumps(v, ensure_ascii=False, separators=(",", ":"))
 
 
+def merge_item(previous: dict, incoming: dict) -> dict:
+    """Merge collection data without erasing known values; lists retain discovered metadata."""
+    def merge(old, new):
+        if new is None or new == '' or new == [] or new == {}:
+            return old if old is not None else new
+        if isinstance(new, str) and not new.strip():
+            return old
+        if isinstance(old, dict) and isinstance(new, dict):
+            result = dict(old)
+            for key, value in new.items():
+                result[key] = merge(old.get(key), value)
+            return result
+        if isinstance(old, list) and isinstance(new, list):
+            return old + [v for v in new if v not in old]
+        return new
+
+    result = merge(previous, incoming)
+    queries = []
+    for row in (previous, incoming):
+        for query in [row.get('query'), *(row.get('queries') or [])]:
+            if query and query not in queries:
+                queries.append(query)
+    result['queries'] = sorted(queries)
+    result['query'] = previous.get('query') or incoming.get('query') or ''
+    if any((row.get('extra') or {}).get('low_fans_hot') is True for row in (previous, incoming)):
+        result['extra'] = dict(result.get('extra') or {}, low_fans_hot=True)
+    return result
+
+
 def upsert_items(con: sqlite3.Connection, items: list[dict], now: float | None = None) -> int:
     """Insert or refresh items and record a metric snapshot for each. Returns how many were new."""
     now = now or time.time()
     new = 0
     for it in items:
-        row = con.execute("SELECT queries, first_seen FROM items WHERE id=?", (it["id"],)).fetchone()
+        row = con.execute("SELECT * FROM items WHERE id=?", (it["id"],)).fetchone()
+        snapshot = it.get("metrics")
+        if row:
+            previous = dict(row)
+            for field, fallback in (("queries", "[]"), ("metrics", "{}"), ("extra", "{}")):
+                previous[field] = json.loads(previous[field] or fallback)
+            it = merge_item(previous, it)
         queries = set(json.loads(row["queries"] or "[]")) if row else set()
         queries.update(q for q in [it.get("query"), *(it.get("queries") or [])] if q)
         if row is None:
@@ -104,9 +139,9 @@ def upsert_items(con: sqlite3.Connection, items: list[dict], now: float | None =
                 (it.get("title"), it.get("text"), it.get("url"), it.get("thumb"), it.get("author"),
                  it.get("author_id"), it.get("published_at"), now, _j(it.get("metrics") or {}),
                  _j(it.get("extra") or {}), _j(sorted(queries)), it["id"]))
-        if it.get("metrics"):
+        if snapshot:
             con.execute("INSERT OR REPLACE INTO snaps(item_id, ts, metrics) VALUES(?,?,?)",
-                        (it["id"], round(now), _j(it["metrics"])))
+                        (it["id"], round(now), _j(snapshot)))
     con.commit()
     return new
 

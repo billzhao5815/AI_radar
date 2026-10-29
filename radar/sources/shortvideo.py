@@ -48,14 +48,16 @@ def douyin(queries=None, per_query: int = config.DOUYIN_PER_QUERY, date_type: in
                 continue
             out.append({
                 "id": f"douyin:{vid}", "source": "douyin", "kind": "video",
-                "title": (r.get("title") or "").strip()[:200], "text": "",
+                "title": (r.get("title") or "").strip()[:200], "text": (r.get("desc") or r.get("description") or "")[:400],
                 "url": f"https://www.douyin.com/video/{vid}", "thumb": r.get("thumbnail") or "",
                 "author": r.get("nickname") or "", "author_id": r.get("nickname") or "",
                 "published_at": _bj_ts(r.get("createTime")),
                 "metrics": {"views": None, "likes": count(r.get("likes")), "followers": count(r.get("fans")),
                             "index": count(r.get("index"))},
                 "extra": {"duration": r.get("duration"), "vertical": True,
-                          "low_fans_hot": bool(r.get("isLowFansButHot"))},
+                          "low_fans_hot": bool(r.get("isLowFansButHot")),
+                          **{k: r[k] for k in ('tag', 'tags', 'topic', 'topics', 'hashtags', 'cha_list', 'text_extra')
+                             if k in r}},
                 "query": f"douyin:{q}" + (":低粉爆款" if label == 1 else ""),
             })
     return out
